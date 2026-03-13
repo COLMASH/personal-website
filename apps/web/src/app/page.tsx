@@ -1,0 +1,18 @@
+import { LoginForm } from '@/features/auth/components/login-form'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+
+export default function LoginPage() {
+    return (
+        <main className="flex min-h-screen items-center justify-center bg-background">
+            <Card className="w-full max-w-md">
+                <CardHeader className="text-center">
+                    <CardTitle className="text-3xl font-bold">personal-website</CardTitle>
+                    <CardDescription>Sign in to your account</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <LoginForm />
+                </CardContent>
+            </Card>
+        </main>
+    )
+}

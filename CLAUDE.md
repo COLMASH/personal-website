@@ -1,0 +1,128 @@
+# CLAUDE.md — personal-website
+
+This file provides guidance to Claude Code (claude.ai/code) when working with this codebase.
+
+## Project Overview
+
+**personal-website** is a full-stack monorepo containing:
+- **Frontend**: Next.js 15 (App Router) with TypeScript, Tailwind CSS, and shadcn/ui
+- **Backend**: NestJS with TypeScript, Prisma ORM, and PostgreSQL
+- **Infrastructure**: Docker Compose for local development, VPS deployment via SSH
+
+## Architecture
+
+```
+personal-website/
+├── apps/
+│   ├── web/          # Next.js 15 frontend (port 3000)
+│   └── api/          # NestJS backend (port 8000)
+├── packages/         # Shared packages (types, utils, config)
+├── docker/           # Docker configuration files
+├── docker-compose.yml
+├── turbo.json        # Turborepo pipeline config
+└── pnpm-workspace.yaml
+```
+
+### Backend (NestJS)
+- **Framework**: NestJS with TypeScript
+- **ORM**: Prisma with PostgreSQL
+- **Database**: PostgreSQL (personal_website_db)
+- **Auth**: JWT-based authentication
+- **Structure**: Module-based architecture (controllers, services, modules, DTOs, guards)
+
+### Frontend (Next.js)
+- **Framework**: Next.js 15 with App Router
+- **Styling**: Tailwind CSS v4 + shadcn/ui components
+- **State**: React hooks + server components where possible
+- **API calls**: Server actions or fetch with API route handlers
+
+## Commands
+
+### Monorepo (from root)
+- `pnpm dev` — Start all apps in development mode
+- `pnpm dev:web` — Start only the frontend
+- `pnpm dev:api` — Start only the backend
+- `pnpm build` — Build all apps
+- `pnpm lint` — Lint all apps
+- `pnpm format` — Format all apps
+- `pnpm check-types` — Type-check all apps
+- `pnpm test` — Run all tests
+- `pnpm test:api` — Run backend tests only
+
+### Frontend (from apps/web)
+- `pnpm dev` — Start dev server on port 3000
+- `pnpm build` — Production build
+- `pnpm lint` — ESLint check
+- `pnpm format` — Prettier format
+
+### Backend (from apps/api)
+- `npm run start:dev` — Start NestJS in watch mode (port 8000)
+- `npm run build` — Compile TypeScript
+- `npm run lint` — ESLint check
+- `npm test` — Run unit tests (Jest)
+- `npm run test:e2e` — Run end-to-end tests
+- `npx prisma migrate dev --name <name>` — Create a new migration
+- `npx prisma migrate deploy` — Apply pending migrations
+- `npx prisma generate` — Regenerate Prisma client
+- `npx prisma studio` — Open Prisma Studio GUI
+
+### Docker
+- `pnpm docker:up` — Build and start all containers
+- `pnpm docker:down` — Stop containers
+- `pnpm docker:reset` — Reset volumes and rebuild
+
+### Database
+- `pnpm db:migrate` — Deploy migrations via Prisma
+- `pnpm db:revision` — Create a new migration (append name after --)
+
+### VPS Operations
+- SSH into VPS, pull latest, rebuild containers
+- Database backups: `pg_dump` from the PostgreSQL container
+- Logs: `docker compose logs -f <service>`
+
+## Key Conventions
+
+### General
+- Use TypeScript everywhere (strict mode)
+- Prefer `const` over `let`; never use `var`
+- Use named exports, not default exports (except Next.js pages)
+- All environment variables go in `.env` (copied from `.env.example`)
+- Never commit `.env` files
+
+### Backend (NestJS)
+- Follow NestJS module structure: `module.ts`, `controller.ts`, `service.ts`, `dto/`, `guards/`
+- Use class-validator decorators for DTO validation
+- Use Prisma for all database operations (no raw SQL unless necessary)
+- Business logic belongs in services, not controllers
+- Use guards for authentication/authorization
+- Use interceptors for response transformation
+- Use pipes for input validation and transformation
+- Migrations live in `apps/api/prisma/migrations/`
+- Name migrations descriptively: `add_users_table`, `add_post_slug_index`
+
+### Frontend (Next.js)
+- Use App Router (`app/` directory) — no Pages Router
+- Prefer server components; add `'use client'` only when needed
+- Use `cn()` utility for conditional Tailwind classes
+- Place reusable components in `components/ui/` (shadcn) or `components/`
+- Colocate page-specific components with their route
+- Use `next/image` for all images
+- Use `next/link` for all internal navigation
+
+### Code Style
+- Prettier handles formatting (see `.prettierrc`)
+- No semicolons
+- Single quotes
+- Trailing commas (ES5)
+- 2-space indentation
+- Max line width: 100 characters
+
+### Git
+- Conventional commits: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `test:`
+- Pre-commit hook runs lint-staged (Prettier + ESLint)
+- Keep commits small and focused
+
+### Testing
+- Backend: Jest for unit and e2e tests
+- Frontend: Vitest + React Testing Library (if configured)
+- Test files live next to the code they test (`*.spec.ts` or `*.test.ts`)

@@ -1,0 +1,45 @@
+version: 2
+
+updates:
+  # Root (turbo, shared config)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    groups:
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Frontend (Next.js)
+  - package-ecosystem: "npm"
+    directory: "/apps/web"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    groups:
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Backend (NestJS)
+  - package-ecosystem: "npm"
+    directory: "/apps/api"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    groups:
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
