@@ -97,6 +97,7 @@ apps/api/prisma/*.db-journal
 .next/
 out/
 .vercel
+next-env.d.ts
 
 # ===========================================
 # Misc
