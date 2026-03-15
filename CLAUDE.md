@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with th
 
 **personal-website** is a full-stack monorepo containing:
 - **Frontend**: Next.js 15 (App Router) with TypeScript, Tailwind CSS, and shadcn/ui
-- **Backend**: NestJS with TypeScript, Prisma ORM, and PostgreSQL
+- **Backend**: NestJS with TypeScript, Prisma ORM, and SQLite
 - **Infrastructure**: Docker Compose for local development, VPS deployment via SSH
 
 ## Architecture
@@ -25,8 +25,8 @@ personal-website/
 
 ### Backend (NestJS)
 - **Framework**: NestJS with TypeScript
-- **ORM**: Prisma with PostgreSQL
-- **Database**: PostgreSQL (personal_website_db)
+- **ORM**: Prisma with SQLite
+- **Database**: SQLite (file-based)
 - **Auth**: JWT-based authentication
 - **Structure**: Module-based architecture (controllers, services, modules, DTOs, guards)
 
@@ -77,7 +77,7 @@ personal-website/
 
 ### VPS Operations
 - SSH into VPS, pull latest, rebuild containers
-- Database backups: `pg_dump` from the PostgreSQL container
+- Database backups: copy the SQLite `.db` file from the data volume
 - Logs: `docker compose logs -f <service>`
 
 ## Key Conventions

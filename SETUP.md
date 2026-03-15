@@ -9,11 +9,10 @@ Delete this file once setup is complete.
 
 You need accounts on these services (all have free tiers):
 
-- [ ] [GitHub](https://github.com) — code hosting, CI/CD, container registry
+- [x] [GitHub](https://github.com) — code hosting, CI/CD, container registry
 - [ ] [Vercel](https://vercel.com) — frontend hosting (connect with GitHub)
 - [ ] [Sentry](https://sentry.io) — error monitoring
 - [ ] VPS provider — [Hetzner](https://hetzner.com) or [GCP](https://cloud.google.com) for backend hosting
-- [ ] (Optional) [Supabase](https://supabase.com) — managed PostgreSQL (alternative to self-hosted on VPS)
 
 ---
 
@@ -21,8 +20,8 @@ You need accounts on these services (all have free tiers):
 
 **Where:** [github.com/new](https://github.com/new)
 
-- [ ] Create a new repository named `personal-website`
-- [ ] Push the scaffolded code:
+- [x] Create a new repository named `personal-website`
+- [x] Push the scaffolded code:
   ```bash
   git init
   git add -A
@@ -52,33 +51,11 @@ Create **two** Sentry projects under the same organization:
 
 ---
 
-## Step 3: Database (choose one)
-
-### Option A: Supabase (Managed PostgreSQL — recommended for starting out)
-
-**Where:** [supabase.com](https://supabase.com) → New Project
-
-- [ ] Create a new Supabase project in the region closest to your VPS
-- [ ] Go to **Settings → Database → Connection string → URI**
-- [ ] Copy the connection string
-- [ ] Use the connection string as-is (it already starts with `postgresql://`)
-- [ ] Note: `DATABASE_URL = ` ____________________
-
-> With Supabase, you do NOT need to run PostgreSQL on your VPS. Skip the `db` service in `docker-compose.yml`.
-
-### Option B: Self-hosted PostgreSQL on VPS
-
-PostgreSQL runs alongside your API in Docker on the VPS. No external service needed — the `db` service in `docker-compose.yml` handles everything.
-
-- [ ] Generate a strong password: `openssl rand -base64 32`
-- [ ] Note: `POSTGRES_PASSWORD = ` ____________________
-- [ ] Your DATABASE_URL will be: `postgresql://app_user:{password}@db:5432/personal_website_db`
-
----
-
-## Step 4: VPS Provisioning (Backend)
+## Step 3: VPS Provisioning (Backend)
 
 **Where:** [Hetzner Cloud Console](https://console.hetzner.cloud) or [GCP Console](https://console.cloud.google.com)
+
+> **Note:** No database provisioning needed — SQLite is file-based and runs inside the API container. The database file persists in a mounted volume (`./data`).
 
 ### Provision the server
 - [ ] Create a VPS (recommended: 2 vCPU, 4GB RAM, Ubuntu 24.04)
@@ -106,13 +83,13 @@ PostgreSQL runs alongside your API in Docker on the VPS. No external service nee
 - [ ] Note: `VPS_USER = ` ____________________
 
 ### Set up the application directory
-- [ ] Create the app directory and copy production files:
+- [ ] Create the app directory and data directory:
   ```bash
-  sudo mkdir -p /opt/personal-website
-  sudo chown deploy:deploy /opt/personal-website
+  sudo mkdir -p /opt/personal-website/data
+  sudo chown -R deploy:deploy /opt/personal-website
   ```
 - [ ] Copy `docker-compose.yml` to `/opt/personal-website/docker-compose.yml`
-- [ ] Create `.env.production` from `.env.production.example` with real values (see Step 7)
+- [ ] Create `.env.production` from `.env.production.example` with real values (see Step 6)
 
 ### Generate deployment SSH key
 - [ ] On your **local machine**, generate a key pair for CI/CD:
@@ -129,12 +106,12 @@ PostgreSQL runs alongside your API in Docker on the VPS. No external service nee
 - [ ] On the VPS:
   ```bash
   cd /opt/personal-website
-  docker compose up -d db redis  # Skip 'db' if using Supabase
+  docker compose up -d redis
   ```
 
 ---
 
-## Step 5: Vercel (Frontend Deployment)
+## Step 4: Vercel (Frontend Deployment)
 
 **Where:** [vercel.com](https://vercel.com) → Import Project
 
@@ -165,7 +142,7 @@ PostgreSQL runs alongside your API in Docker on the VPS. No external service nee
 
 ---
 
-## Step 6: GitHub Repository Settings
+## Step 5: GitHub Repository Settings
 
 **Where:** GitHub → Your repo → **Settings**
 
@@ -173,16 +150,16 @@ PostgreSQL runs alongside your API in Docker on the VPS. No external service nee
 
 | Secret | Value | Source |
 |--------|-------|--------|
-| `VPS_HOST` | VPS IP address | Step 4 |
-| `VPS_USER` | `deploy` (or your deploy username) | Step 4 |
-| `VPS_SSH_KEY` | Contents of `~/.ssh/personal-website-deploy` (private key) | Step 4 |
-| `TURBO_TOKEN` | Vercel remote cache token | Step 5 |
+| `VPS_HOST` | VPS IP address | Step 3 |
+| `VPS_USER` | `deploy` (or your deploy username) | Step 3 |
+| `VPS_SSH_KEY` | Contents of `~/.ssh/personal-website-deploy` (private key) | Step 3 |
+| `TURBO_TOKEN` | Vercel remote cache token | Step 4 |
 
 ### Variables (Settings → Secrets and variables → Actions → Variables)
 
 | Variable | Value | Source |
 |----------|-------|--------|
-| `TURBO_TEAM` | Vercel team slug | Step 5 |
+| `TURBO_TEAM` | Vercel team slug | Step 4 |
 
 ### Environments (Settings → Environments)
 
@@ -202,7 +179,7 @@ PostgreSQL runs alongside your API in Docker on the VPS. No external service nee
 
 ---
 
-## Step 7: Production Environment Variables
+## Step 6: Production Environment Variables
 
 ### Backend (.env.production on VPS)
 
@@ -210,10 +187,7 @@ SSH into your VPS and create `/opt/personal-website/.env.production`:
 
 ```env
 # ---------- Database ----------
-POSTGRES_DB=personal_website_db
-POSTGRES_USER=app_user
-POSTGRES_PASSWORD=          # from Step 3
-DATABASE_URL=               # from Step 3 (use internal 'db:5432' if self-hosted, or Supabase URL)
+DATABASE_URL=file:/app/data/personal-website.db
 
 # ---------- Auth ----------
 JWT_SECRET=                 # generate: openssl rand -base64 64
@@ -226,7 +200,7 @@ APP_DEBUG=false
 LOG_LEVEL=INFO
 
 # ---------- CORS ----------
-BACKEND_CORS_ORIGINS=["https://{vercel-url}"]   # from Step 5
+BACKEND_CORS_ORIGINS=["https://{vercel-url}"]   # from Step 4
 
 # ---------- Rate Limiting ----------
 RATE_LIMIT_REQUESTS=60
@@ -245,13 +219,13 @@ REDIS_PASSWORD=             # generate: openssl rand -base64 32
 - [ ] Fill in all values from previous steps
 - [ ] Verify: `docker compose up -d && docker compose logs -f api`
 
-### Frontend (already configured in Vercel — Step 5)
+### Frontend (already configured in Vercel — Step 4)
 
 Double-check that `BACKEND_CORS_ORIGINS` on the backend includes your Vercel domain.
 
 ---
 
-## Step 8: DNS (Optional — Custom Domain)
+## Step 7: DNS (Optional — Custom Domain)
 
 ### Frontend (Vercel)
 - [ ] In Vercel → Project → **Settings → Domains** → Add your domain
@@ -276,11 +250,11 @@ Double-check that `BACKEND_CORS_ORIGINS` on the backend includes your Vercel dom
 
 ---
 
-## Step 9: Verify the Full Pipeline
+## Step 8: Verify the Full Pipeline
 
 ### Local development
 - [ ] `pnpm install` completes without errors
-- [ ] `docker compose up db redis -d` starts infrastructure
+- [ ] `docker compose up redis -d` starts Redis
 - [ ] `pnpm dev` starts both apps
 - [ ] Login page loads at `http://localhost:3000`
 - [ ] Health check passes: `curl http://localhost:8000/api/v1/health`
@@ -309,7 +283,7 @@ Double-check that `BACKEND_CORS_ORIGINS` on the backend includes your Vercel dom
 |--------|---------------|-------------|
 | `AUTH_SECRET` | Vercel env vars | Next.js (NextAuth session encryption) |
 | `JWT_SECRET` | VPS `.env.production` | Backend (token signing) |
-| `DATABASE_URL` | VPS `.env.production` | Backend (PostgreSQL connection) |
+| `DATABASE_URL` | VPS `.env.production` | Backend (SQLite file path) |
 | `NEXT_PUBLIC_API_URL` | Vercel env vars | Frontend (browser API calls) |
 | `API_URL` | Vercel env vars | Frontend server-side (NextAuth) |
 | `SENTRY_DSN` | VPS `.env.production` | Backend (error reporting) |
@@ -317,7 +291,6 @@ Double-check that `BACKEND_CORS_ORIGINS` on the backend includes your Vercel dom
 | `VPS_SSH_KEY` | GitHub Secrets | GitHub Actions (deploy) |
 | `TURBO_TOKEN` | GitHub Secrets | GitHub Actions (TurboRepo cache) |
 | `REDIS_PASSWORD` | VPS `.env.production` | Backend (session/cache) |
-| `POSTGRES_PASSWORD` | VPS `.env.production` | PostgreSQL container |
 
 ---
 

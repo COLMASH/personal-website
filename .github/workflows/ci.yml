@@ -57,23 +57,8 @@ jobs:
     name: Test Backend
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:16-alpine
-        env:
-          POSTGRES_DB: personal_website_db_test
-          POSTGRES_USER: test_user
-          POSTGRES_PASSWORD: test_password
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd "pg_isready -U test_user -d personal_website_db_test"
-          --health-interval 5s
-          --health-timeout 5s
-          --health-retries 5
-
     env:
-      DATABASE_URL: postgresql://test_user:test_password@localhost:5432/personal_website_db_test
+      DATABASE_URL: file:./test.db
 
     steps:
       - uses: actions/checkout@v4
@@ -92,8 +77,8 @@ jobs:
       - name: Generate Prisma client
         run: pnpm --filter api exec prisma generate
 
-      - name: Run database migrations
-        run: pnpm --filter api exec prisma migrate deploy
+      - name: Set up test database
+        run: pnpm --filter api exec prisma db push
 
       - name: Run tests
         run: pnpm --filter api test

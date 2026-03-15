@@ -23,7 +23,9 @@ COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 COPY apps/api/prisma ./prisma
 COPY --from=builder /app/dist ./dist
 RUN addgroup --system --gid 1001 appgroup && \
-    adduser --system --uid 1001 --ingroup appgroup appuser
+    adduser --system --uid 1001 --ingroup appgroup appuser && \
+    mkdir -p /app/data && \
+    chown appuser:appgroup /app/data
 USER appuser
 EXPOSE 8000
 CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main.js"]
