@@ -4,7 +4,7 @@ import { withSentryConfig } from '@sentry/nextjs';
 const nextConfig: NextConfig = {
     output: 'standalone',
     experimental: {
-        instrumentationHook: true
+        clientTraceMetadata: ['sentry-trace', 'baggage']
     }
 };
 
