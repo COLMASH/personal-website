@@ -1,8 +1,10 @@
+import { resolve } from 'path';
 import type { NextConfig } from 'next';
 import { withSentryConfig } from '@sentry/nextjs';
 
 const nextConfig: NextConfig = {
     output: 'standalone',
+    outputFileTracingRoot: resolve(__dirname, '../../'),
     experimental: {
         clientTraceMetadata: ['sentry-trace', 'baggage']
     }
