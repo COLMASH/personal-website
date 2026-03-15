@@ -40,9 +40,9 @@ You need accounts on these services (all have free tiers):
 Create **two** Sentry projects under the same organization:
 
 ### Frontend (Next.js)
-- [ ] Create project → Platform: **Next.js**
-- [ ] Copy the DSN → this is your `NEXT_PUBLIC_SENTRY_DSN`
-- [ ] Note: `NEXT_PUBLIC_SENTRY_DSN = ` ____________________
+- [x] Create project → Platform: **Next.js**
+- [x] Copy the DSN → this is your `NEXT_PUBLIC_SENTRY_DSN`
+- [x] Note: `NEXT_PUBLIC_SENTRY_DSN = ` _(configured via env vars)_
 
 ### Backend (NestJS)
 - [ ] Create project → Platform: **Node.js (NestJS)**

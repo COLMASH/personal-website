@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/nextjs';
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import type { UserRole } from '@/types/api';
@@ -24,14 +25,34 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                         })
                     });
 
-                    if (!res.ok) return null;
+                    if (!res.ok) {
+                        Sentry.captureMessage('Auth login failed', {
+                            level: 'warning',
+                            tags: {
+                                'error.type': 'auth',
+                                'api.endpoint': '/api/v1/auth/login',
+                                'api.status': String(res.status)
+                            }
+                        });
+                        return null;
+                    }
 
                     const data = await res.json();
                     const userRes = await fetch(`${apiUrl}/api/v1/auth/me`, {
                         headers: { Authorization: `Bearer ${data.access_token}` }
                     });
 
-                    if (!userRes.ok) return null;
+                    if (!userRes.ok) {
+                        Sentry.captureMessage('Auth me fetch failed', {
+                            level: 'error',
+                            tags: {
+                                'error.type': 'auth',
+                                'api.endpoint': '/api/v1/auth/me',
+                                'api.status': String(userRes.status)
+                            }
+                        });
+                        return null;
+                    }
 
                     const user = await userRes.json();
                     return {
@@ -42,7 +63,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                         accessToken: data.access_token,
                         role: user.role
                     };
-                } catch {
+                } catch (error) {
+                    Sentry.captureException(error, {
+                        tags: { 'error.type': 'auth', 'api.category': 'network_error' }
+                    });
                     return null;
                 }
             }
