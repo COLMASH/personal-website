@@ -10,8 +10,8 @@ Delete this file once setup is complete.
 You need accounts on these services (all have free tiers):
 
 - [x] [GitHub](https://github.com) — code hosting, CI/CD, container registry
-- [ ] [Vercel](https://vercel.com) — frontend hosting (connect with GitHub)
-- [ ] [Sentry](https://sentry.io) — error monitoring
+- [x] [Vercel](https://vercel.com) — frontend hosting (connect with GitHub)
+- [x] [Sentry](https://sentry.io) — error monitoring
 - [ ] VPS provider — [Hetzner](https://hetzner.com) or [GCP](https://cloud.google.com) for backend hosting
 
 ---
@@ -45,9 +45,9 @@ Create **two** Sentry projects under the same organization:
 - [x] Note: `NEXT_PUBLIC_SENTRY_DSN = ` _(configured via env vars)_
 
 ### Backend (NestJS)
-- [ ] Create project → Platform: **Node.js (NestJS)**
-- [ ] Copy the DSN → this is your `SENTRY_DSN`
-- [ ] Note: `SENTRY_DSN = ` ____________________
+- [x] Create project → Platform: **Node.js (NestJS)**
+- [x] Copy the DSN → this is your `SENTRY_DSN`
+- [x] Note: `SENTRY_DSN = ` _(configured via env vars)_
 
 ---
 
