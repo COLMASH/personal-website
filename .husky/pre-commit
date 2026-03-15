@@ -3,6 +3,8 @@
 echo '🏗️👷 Styling, linting, and building your monorepo before committing...'
 
 # Check Prettier formatting
+echo ''
+echo '💅 Step 1/5: Checking Prettier formatting...'
 pnpm check-format ||
 (
     echo '🤢🤮🤢 Prettier Check Failed! 🤢🤮🤢
@@ -11,6 +13,8 @@ pnpm check-format ||
 )
 
 # Check ESLint standards
+echo ''
+echo '📏 Step 2/5: Checking ESLint standards...'
 pnpm check-lint ||
 (
     echo '😤📝😤 ESLint Check Failed! 😤📝😤
@@ -19,6 +23,8 @@ pnpm check-lint ||
 )
 
 # Check TypeScript types
+echo ''
+echo '🔍 Step 3/5: Checking TypeScript types...'
 pnpm check-types ||
 (
     echo '🤡❌🤡 Type Check Failed! 🤡❌🤡
@@ -27,6 +33,8 @@ pnpm check-types ||
 )
 
 # Run tests
+echo ''
+echo '🧪 Step 4/5: Running tests...'
 pnpm test ||
 (
     echo '🧪💀🧪 Tests Failed! 🧪💀🧪
@@ -35,8 +43,9 @@ pnpm test ||
 )
 
 # If everything else passes... try building
+echo ''
 echo '🤔🤔🤔... Alright, code looks clean and tests pass... Lets see if it builds. 🤔🤔🤔'
-
+echo '🔨 Step 5/5: Building project...'
 pnpm build ||
 (
     echo '❌👷🔨❌ Build Failed! ❌👷🔨❌
@@ -45,4 +54,5 @@ pnpm build ||
 )
 
 # Everything passed!
+echo ''
 echo '✅✅✅✅ Everything passed! Committing now 🚀 ✅✅✅✅'
