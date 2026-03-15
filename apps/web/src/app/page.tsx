@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 
 export default function LoginPage() {
     return (
-        <main className="flex min-h-screen items-center justify-center bg-background">
+        <main className="bg-background flex min-h-screen items-center justify-center">
             <Card className="w-full max-w-md">
                 <CardHeader className="text-center">
                     <CardTitle className="text-3xl font-bold">personal-website</CardTitle>

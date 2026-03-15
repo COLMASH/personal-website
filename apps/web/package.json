@@ -7,6 +7,8 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
+        "check-format": "prettier --check \"src/**/*.{ts,tsx,css,json}\"",
+        "check-lint": "next lint",
         "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\"",
         "check-types": "tsc --noEmit",
         "test": "vitest run",

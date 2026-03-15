@@ -18,10 +18,7 @@ export class ApiError extends Error {
     }
 }
 
-export async function apiClient<T>(
-    endpoint: string,
-    options: RequestInit = {}
-): Promise<T> {
+export async function apiClient<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
     const method = options.method ?? 'GET'
 
     const session = await getSession()

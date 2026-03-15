@@ -15,14 +15,14 @@ export function createQueryClient(): QueryClient {
             }
         },
         queryCache: new QueryCache({
-            onError: (error) => {
+            onError: error => {
                 if (error instanceof ApiError && error.status === 401) {
                     signOut({ redirect: true, callbackUrl: '/' })
                 }
             }
         }),
         mutationCache: new MutationCache({
-            onError: (error) => {
+            onError: error => {
                 if (error instanceof ApiError && error.status !== 401) {
                     toast.error(error.detail)
                 }

@@ -26,6 +26,12 @@
     },
     "format": {
       "cache": false
+    },
+    "check-format": {
+      "cache": false
+    },
+    "check-lint": {
+      "dependsOn": ["^build"]
     }
   }
 }

@@ -17,11 +17,9 @@ export function GlobalError({ error, reset }: GlobalErrorProps) {
     return (
         <html>
             <body>
-                <div className="flex min-h-screen items-center justify-center bg-background">
+                <div className="bg-background flex min-h-screen items-center justify-center">
                     <div className="space-y-4 text-center">
-                        <h2 className="text-2xl font-bold text-foreground">
-                            Something went wrong
-                        </h2>
+                        <h2 className="text-foreground text-2xl font-bold">Something went wrong</h2>
                         <p className="text-muted-foreground">An unexpected error occurred.</p>
                         <Button onClick={reset}>Try again</Button>
                     </div>

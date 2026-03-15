@@ -10,9 +10,7 @@ export function PostCard({ post }: PostCardProps) {
         <Card>
             <CardHeader>
                 <CardTitle>{post.name}</CardTitle>
-                {post.description && (
-                    <CardDescription>{post.description}</CardDescription>
-                )}
+                {post.description && <CardDescription>{post.description}</CardDescription>}
             </CardHeader>
         </Card>
     )

@@ -92,18 +92,17 @@ export function CreatePostDialog() {
                                 <FormItem>
                                     <FormLabel>Description</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Enter description (optional)" {...field} />
+                                        <Input
+                                            placeholder="Enter description (optional)"
+                                            {...field}
+                                        />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
                         <DialogFooter>
-                            <Button
-                                type="button"
-                                variant="outline"
-                                onClick={() => setOpen(false)}
-                            >
+                            <Button type="button" variant="outline" onClick={() => setOpen(false)}>
                                 Cancel
                             </Button>
                             <Button type="submit" disabled={createPost.isPending}>

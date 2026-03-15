@@ -9,10 +9,10 @@ interface EmptyStateProps {
 
 export function EmptyState({ icon: Icon, title, description, action }: EmptyStateProps) {
     return (
-        <div className="flex flex-col items-center justify-center rounded-lg border border-dashed border-border p-12 text-center">
-            <Icon className="h-12 w-12 text-muted-foreground" />
-            <h3 className="mt-4 text-lg font-semibold text-foreground">{title}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{description}</p>
+        <div className="border-border flex flex-col items-center justify-center rounded-lg border border-dashed p-12 text-center">
+            <Icon className="text-muted-foreground h-12 w-12" />
+            <h3 className="text-foreground mt-4 text-lg font-semibold">{title}</h3>
+            <p className="text-muted-foreground mt-2 text-sm">{description}</p>
             {action && <div className="mt-6">{action}</div>}
         </div>
     )

@@ -3,10 +3,10 @@ import { NextResponse } from 'next/server'
 
 const publicPaths = ['/', '/api']
 
-export default auth((req) => {
+export default auth(req => {
     const isLoggedIn = !!req.auth
     const isPublicPath = publicPaths.some(
-        (path) => req.nextUrl.pathname === path || req.nextUrl.pathname.startsWith(path + '/')
+        path => req.nextUrl.pathname === path || req.nextUrl.pathname.startsWith(path + '/')
     )
 
     if (!isPublicPath && !isLoggedIn) {

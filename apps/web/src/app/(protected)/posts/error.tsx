@@ -20,7 +20,7 @@ export function ErrorPage({ error, reset }: ErrorPageProps) {
     return (
         <div className="flex min-h-[50vh] items-center justify-center">
             <div className="space-y-4 text-center">
-                <h2 className="text-xl font-semibold text-foreground">Something went wrong</h2>
+                <h2 className="text-foreground text-xl font-semibold">Something went wrong</h2>
                 <p className="text-muted-foreground">
                     {error.message || 'An error occurred loading this page.'}
                 </p>

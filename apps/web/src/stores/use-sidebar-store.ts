@@ -9,10 +9,10 @@ interface SidebarState {
 
 export const useSidebarStore = create<SidebarState>()(
     persist(
-        (set) => ({
+        set => ({
             isOpen: true,
-            toggle: () => set((state) => ({ isOpen: !state.isOpen })),
-            setOpen: (open) => set({ isOpen: open })
+            toggle: () => set(state => ({ isOpen: !state.isOpen })),
+            setOpen: open => set({ isOpen: open })
         }),
         { name: 'sidebar' }
     )

@@ -3,5 +3,14 @@
     "printWidth": 100,
     "singleQuote": true,
     "trailingComma": "none",
-    "plugins": ["prettier-plugin-tailwindcss"]
+    "semi": false,
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "plugins": ["prettier-plugin-tailwindcss"],
+    "overrides": [
+        {
+            "files": ["*.yaml", "*.yml", "*.json"],
+            "options": { "tabWidth": 2 }
+        }
+    ]
 }

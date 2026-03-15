@@ -1,12 +1,12 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger'
 
 export class TokenResponseDto {
-  @ApiProperty()
-  accessToken: string;
+    @ApiProperty()
+    accessToken: string
 
-  @ApiProperty()
-  expiresIn: number;
+    @ApiProperty()
+    expiresIn: number
 
-  @ApiProperty({ default: 'bearer' })
-  tokenType: string;
+    @ApiProperty({ default: 'bearer' })
+    tokenType: string
 }

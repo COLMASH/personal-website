@@ -9,9 +9,7 @@ import { EmptyState } from '@/components/common/empty-state'
 import { postsQueries } from '../api/posts-queries'
 
 export function PostsList() {
-    const { data, isLoading, error } = useQuery(
-        postsQueries.list({ page: 1, page_size: 20 })
-    )
+    const { data, isLoading, error } = useQuery(postsQueries.list({ page: 1, page_size: 20 }))
 
     if (isLoading) {
         return (
@@ -26,9 +24,7 @@ export function PostsList() {
     if (error) {
         return (
             <Alert variant="destructive">
-                <AlertDescription>
-                    Failed to load posts. Please try again later.
-                </AlertDescription>
+                <AlertDescription>Failed to load posts. Please try again later.</AlertDescription>
             </Alert>
         )
     }
@@ -45,13 +41,11 @@ export function PostsList() {
 
     return (
         <div className="grid gap-4">
-            {data.items.map((item) => (
+            {data.items.map(item => (
                 <Card key={item.id}>
                     <CardHeader>
                         <CardTitle>{item.name}</CardTitle>
-                        {item.description && (
-                            <CardDescription>{item.description}</CardDescription>
-                        )}
+                        {item.description && <CardDescription>{item.description}</CardDescription>}
                     </CardHeader>
                 </Card>
             ))}

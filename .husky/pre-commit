@@ -1,3 +1,48 @@
-npx lint-staged
-pnpm check-types
-pnpm build
+#!/usr/bin/env sh
+
+echo '🏗️👷 Styling, linting, and building your monorepo before committing...'
+
+# Check Prettier formatting
+pnpm check-format ||
+(
+    echo '🤢🤮🤢 Prettier Check Failed! 🤢🤮🤢
+            Run pnpm format, add changes and try commit again.';
+    false;
+)
+
+# Check ESLint standards
+pnpm check-lint ||
+(
+    echo '😤📝😤 ESLint Check Failed! 😤📝😤
+            Make the required changes listed above, add changes and try to commit again.'
+    false;
+)
+
+# Check TypeScript types
+pnpm check-types ||
+(
+    echo '🤡❌🤡 Type Check Failed! 🤡❌🤡
+            TypeScript is not happy with you. Fix the type errors above, stage changes and try again.'
+    false;
+)
+
+# Run tests
+pnpm test ||
+(
+    echo '🧪💀🧪 Tests Failed! 🧪💀🧪
+            Your tests are failing. Fix them before you even think about committing.'
+    false;
+)
+
+# If everything else passes... try building
+echo '🤔🤔🤔... Alright, code looks clean and tests pass... Lets see if it builds. 🤔🤔🤔'
+
+pnpm build ||
+(
+    echo '❌👷🔨❌ Build Failed! ❌👷🔨❌
+            The build broke. Check the errors above and fix them before committing.'
+    false;
+)
+
+# Everything passed!
+echo '✅✅✅✅ Everything passed! Committing now 🚀 ✅✅✅✅'

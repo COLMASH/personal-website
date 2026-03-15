@@ -21,10 +21,10 @@ export function UserMenu() {
     const initials = session.user.name
         ? session.user.name
               .split(' ')
-              .map((n) => n[0])
+              .map(n => n[0])
               .join('')
               .toUpperCase()
-        : session.user.email?.[0]?.toUpperCase() ?? 'U'
+        : (session.user.email?.[0]?.toUpperCase() ?? 'U')
 
     return (
         <DropdownMenu>
@@ -42,8 +42,8 @@ export function UserMenu() {
             <DropdownMenuContent className="w-56" align="end" forceMount>
                 <DropdownMenuLabel className="font-normal">
                     <div className="flex flex-col space-y-1">
-                        <p className="text-sm font-medium leading-none">{session.user.name}</p>
-                        <p className="text-xs leading-none text-muted-foreground">
+                        <p className="text-sm leading-none font-medium">{session.user.name}</p>
+                        <p className="text-muted-foreground text-xs leading-none">
                             {session.user.email}
                         </p>
                     </div>
