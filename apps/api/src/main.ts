@@ -36,17 +36,15 @@ async function bootstrap() {
         })
     )
 
-    // Swagger — only in development
-    if (process.env.NODE_ENV !== 'production') {
-        const config = new DocumentBuilder()
-            .setTitle('personal-website API')
-            .setDescription('API documentation')
-            .setVersion('1.0')
-            .addBearerAuth()
-            .build()
-        const document = SwaggerModule.createDocument(app, config)
-        SwaggerModule.setup('docs', app, document)
-    }
+    // Swagger
+    const config = new DocumentBuilder()
+        .setTitle('personal-website API')
+        .setDescription('API documentation')
+        .setVersion('1.0')
+        .addBearerAuth()
+        .build()
+    const document = SwaggerModule.createDocument(app, config)
+    SwaggerModule.setup('docs', app, document)
 
     await app.listen(process.env.PORT ?? 8000)
 }
