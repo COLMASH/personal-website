@@ -33,7 +33,7 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
-      - run: pnpm typecheck
+      - run: pnpm check-types
 
   test-frontend:
     name: Test Frontend
