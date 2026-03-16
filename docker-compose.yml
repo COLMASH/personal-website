@@ -45,7 +45,7 @@ services:
       ENVIRONMENT: ${ENVIRONMENT:-production}
       APP_DEBUG: ${APP_DEBUG:-false}
       LOG_LEVEL: ${LOG_LEVEL:-INFO}
-      BACKEND_CORS_ORIGINS: ${BACKEND_CORS_ORIGINS:-["http://localhost:3000"]}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
       SENTRY_DSN: ${SENTRY_DSN:-}
       SENTRY_ENABLED: ${SENTRY_ENABLED:-false}
     volumes:

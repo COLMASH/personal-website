@@ -198,7 +198,7 @@ APP_DEBUG=false
 LOG_LEVEL=INFO
 
 # ---------- CORS ----------
-BACKEND_CORS_ORIGINS=["https://{vercel-url}"]   # from Step 4
+CORS_ORIGINS=["https://{vercel-url}"]   # from Step 4
 
 # ---------- Rate Limiting ----------
 RATE_LIMIT_REQUESTS=60
@@ -219,7 +219,7 @@ REDIS_PASSWORD=             # generate: openssl rand -base64 32
 
 ### Frontend (already configured in Vercel — Step 4)
 
-Double-check that `BACKEND_CORS_ORIGINS` on the backend includes your Vercel domain.
+Double-check that `CORS_ORIGINS` on the backend includes your Vercel domain.
 
 ---
 
@@ -235,7 +235,7 @@ Double-check that `BACKEND_CORS_ORIGINS` on the backend includes your Vercel dom
 - [x] API accessible at `https://api.mashconsultancy.com`
 - [x] Swagger docs at `https://api.mashconsultancy.com/docs`
 - [x] Updated `NEXT_PUBLIC_API_URL` in Vercel
-- [x] Updated `BACKEND_CORS_ORIGINS` on VPS
+- [x] Updated `CORS_ORIGINS` on VPS
 
 ---
 
