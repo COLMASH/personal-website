@@ -62,7 +62,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            cd /opt/personal-website
+            cd ~/personal-website
             docker compose pull api
             docker compose up -d api
             docker image prune -f
