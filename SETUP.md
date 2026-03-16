@@ -12,7 +12,7 @@ You need accounts on these services (all have free tiers):
 - [x] [GitHub](https://github.com) — code hosting, CI/CD, container registry
 - [x] [Vercel](https://vercel.com) — frontend hosting (connect with GitHub)
 - [x] [Sentry](https://sentry.io) — error monitoring
-- [ ] VPS provider — [Hetzner](https://hetzner.com) or [GCP](https://cloud.google.com) for backend hosting
+- [x] VPS provider — [Hetzner](https://hetzner.com) (2GB RAM, Ubuntu 24.04, IP: 178.156.248.254)
 
 ---
 
@@ -30,6 +30,7 @@ You need accounts on these services (all have free tiers):
   git push -u origin main
   ```
 - [ ] Enable GitHub Container Registry (GHCR) — it's on by default for public repos. For private repos, go to **Settings → Packages** and ensure packages are enabled.
+- [x] Domain: `mashconsultancy.com` (purchased via Cloudflare)
 
 ---
 
@@ -58,12 +59,12 @@ Create **two** Sentry projects under the same organization:
 > **Note:** No database provisioning needed — SQLite is file-based and runs inside the API container. The database file persists in a mounted volume (`./data`).
 
 ### Provision the server
-- [ ] Create a VPS (recommended: 2 vCPU, 4GB RAM, Ubuntu 24.04)
-- [ ] Note the public IP: `VPS_HOST = ` ____________________
-- [ ] Add your SSH key during creation (or after via `ssh-copy-id`)
+- [x] Create a VPS (Hetzner, 2 vCPU, 2GB RAM, Ubuntu 24.04)
+- [x] Note the public IP: `VPS_HOST = 178.156.248.254`
+- [x] Add your SSH key during creation
 
 ### Install Docker on the VPS
-- [ ] SSH into the server and run:
+- [x] SSH into the server and run:
   ```bash
   curl -fsSL https://get.docker.com | sh
   sudo usermod -aG docker $USER
@@ -71,25 +72,26 @@ Create **two** Sentry projects under the same organization:
   ```
 
 ### Create deployment user (recommended)
-- [ ] Create a `deploy` user instead of using root:
+- [x] Created `miguel` user (instead of `deploy`):
   ```bash
-  sudo adduser deploy
-  sudo usermod -aG docker deploy
-  # Copy your SSH key to the deploy user
-  sudo mkdir -p /home/deploy/.ssh
-  sudo cp ~/.ssh/authorized_keys /home/deploy/.ssh/
-  sudo chown -R deploy:deploy /home/deploy/.ssh
+  sudo adduser miguel
+  sudo usermod -aG docker miguel
+  sudo mkdir -p /home/miguel/.ssh
+  sudo cp ~/.ssh/authorized_keys /home/miguel/.ssh/
+  sudo chown -R miguel:miguel /home/miguel/.ssh
   ```
-- [ ] Note: `VPS_USER = ` ____________________
+- [x] Note: `VPS_USER = miguel`
+- [x] Disabled root login and password auth
+- [x] Set up UFW firewall (ports 22, 80, 443)
 
 ### Set up the application directory
-- [ ] Create the app directory and data directory:
+- [x] Cloned repo to `~/personal-website` on VPS
+- [x] Created data directory with correct permissions:
   ```bash
-  sudo mkdir -p /opt/personal-website/data
-  sudo chown -R deploy:deploy /opt/personal-website
+  mkdir -p ~/personal-website/data
+  sudo chown -R 1001:1001 ~/personal-website/data
   ```
-- [ ] Copy `docker-compose.yml` to `/opt/personal-website/docker-compose.yml`
-- [ ] Create `.env.production` from `.env.production.example` with real values (see Step 6)
+- [x] Created `.env` with production values
 
 ### Generate deployment SSH key
 - [ ] On your **local machine**, generate a key pair for CI/CD:
@@ -103,11 +105,8 @@ Create **two** Sentry projects under the same organization:
 - [ ] The **private** key content goes into GitHub Secrets as `VPS_SSH_KEY`
 
 ### Start infrastructure services
-- [ ] On the VPS:
-  ```bash
-  cd /opt/personal-website
-  docker compose up -d redis
-  ```
+- [x] All services running via `docker compose up -d` (Nginx, API, Redis)
+- [x] Nginx reverse proxy with Let's Encrypt SSL configured
 
 ---
 
@@ -115,24 +114,23 @@ Create **two** Sentry projects under the same organization:
 
 **Where:** [vercel.com](https://vercel.com) → Import Project
 
-- [ ] Click **"Add New → Project"** and import your GitHub repository
-- [ ] Set **Root Directory** to `apps/web`
-- [ ] Framework Preset should auto-detect **Next.js**
-- [ ] Add environment variables:
+- [x] Click **"Add New → Project"** and import your GitHub repository
+- [x] Set **Root Directory** to `apps/web`
+- [x] Framework Preset should auto-detect **Next.js**
+- [x] Add environment variables:
 
-| Variable | Value |
-|----------|-------|
-| `NEXT_PUBLIC_API_URL` | `https://api.{your-domain}.com` (your backend URL) |
-| `NEXT_PUBLIC_SENTRY_DSN` | _(from Step 2)_ |
-| `NEXT_PUBLIC_SENTRY_ENABLED` | `true` |
-| `NEXT_PUBLIC_ENV` | `production` |
-| `AUTH_SECRET` | _(generate: `openssl rand -base64 33`)_ |
-| `API_URL` | Same as `NEXT_PUBLIC_API_URL` (or internal URL if using private networking) |
+| Variable | Value | Status |
+|----------|-------|--------|
+| `NEXT_PUBLIC_API_URL` | `https://api.mashconsultancy.com` | Done |
+| `NEXT_PUBLIC_SENTRY_DSN` | _(from Step 2)_ | Pending |
+| `NEXT_PUBLIC_SENTRY_ENABLED` | `true` | Pending |
+| `NEXT_PUBLIC_ENV` | `production` | Pending |
+| `AUTH_SECRET` | _(generated)_ | Done |
+| `SENTRY_AUTH_TOKEN` | _(from Sentry)_ | Done |
+| `API_URL` | `https://api.mashconsultancy.com` | Pending |
 
-- [ ] Click **Deploy**
-- [ ] Note your Vercel URL: ____________________
-  - Production: `https://personal-website.vercel.app` (or custom domain)
-  - Preview: Auto-generated per PR
+- [x] Click **Deploy**
+- [x] Production URL: `https://mashconsultancy.com`
 
 ### TurboRepo Remote Cache (optional but recommended)
 - [ ] Run locally: `npx turbo login && npx turbo link`
@@ -215,9 +213,9 @@ REDIS_URL=redis://:PASSWORD@redis:6379/0
 REDIS_PASSWORD=             # generate: openssl rand -base64 32
 ```
 
-- [ ] Generate all secrets marked with "generate:"
-- [ ] Fill in all values from previous steps
-- [ ] Verify: `docker compose up -d && docker compose logs -f api`
+- [x] Generate all secrets marked with "generate:"
+- [x] Fill in all values from previous steps
+- [x] Verify: `docker compose up -d && docker compose logs -f api`
 
 ### Frontend (already configured in Vercel — Step 4)
 
@@ -228,25 +226,16 @@ Double-check that `BACKEND_CORS_ORIGINS` on the backend includes your Vercel dom
 ## Step 7: DNS (Optional — Custom Domain)
 
 ### Frontend (Vercel)
-- [ ] In Vercel → Project → **Settings → Domains** → Add your domain
-- [ ] Add DNS records as instructed (CNAME or A record)
+- [x] In Vercel → Project → **Settings → Domains** → Added `mashconsultancy.com`
+- [x] DNS records configured via Cloudflare (authorized Vercel to manage)
 
 ### Backend (VPS)
-- [ ] Add an A record pointing `api.{your-domain}.com` to your VPS IP
-- [ ] Set up HTTPS with a reverse proxy on the VPS:
-  ```bash
-  # Install Caddy (auto-HTTPS with Let's Encrypt)
-  sudo apt install -y caddy
-  ```
-- [ ] Create `/etc/caddy/Caddyfile`:
-  ```
-  api.{your-domain}.com {
-      reverse_proxy localhost:8000
-  }
-  ```
-- [ ] Restart Caddy: `sudo systemctl restart caddy`
-- [ ] Update `NEXT_PUBLIC_API_URL` in Vercel to `https://api.{your-domain}.com`
-- [ ] Update `BACKEND_CORS_ORIGINS` on VPS to include your frontend domain
+- [x] Added A record: `api.mashconsultancy.com` → `178.156.248.254`
+- [x] Set up Nginx reverse proxy with Let's Encrypt SSL (via Docker)
+- [x] API accessible at `https://api.mashconsultancy.com`
+- [x] Swagger docs at `https://api.mashconsultancy.com/docs`
+- [x] Updated `NEXT_PUBLIC_API_URL` in Vercel
+- [x] Updated `BACKEND_CORS_ORIGINS` on VPS
 
 ---
 
