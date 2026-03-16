@@ -63,6 +63,7 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
             cd ~/personal-website
+            git pull
             docker compose pull api
             docker compose up -d api
             docker image prune -f
