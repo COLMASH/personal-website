@@ -40,7 +40,7 @@ async function bootstrap() {
     const config = new DocumentBuilder()
         .setTitle('personal-website API')
         .setDescription('API documentation')
-        .setVersion('0.1.0')
+        .setVersion('0.2.0')
         .addBearerAuth()
         .build()
     const document = SwaggerModule.createDocument(app, config)
