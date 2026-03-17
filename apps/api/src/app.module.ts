@@ -27,7 +27,8 @@ import { appConfig, AppConfig } from './config/app.config'
         // Environment config — validated with class-validator
         ConfigModule.forRoot({
             isGlobal: true,
-            load: [appConfig]
+            load: [appConfig],
+            envFilePath: ['.env', '../../.env']
         }),
 
         // Structured logging with Pino
