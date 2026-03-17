@@ -133,10 +133,10 @@ Create **two** Sentry projects under the same organization:
 - [x] Production URL: `https://mashconsultancy.com`
 
 ### TurboRepo Remote Cache (optional but recommended)
-- [ ] Run locally: `npx turbo login && npx turbo link`
-- [ ] Go to [vercel.com/account/tokens](https://vercel.com/account/tokens) and create a token
-- [ ] Note: `TURBO_TOKEN = ` ____________________
-- [ ] Note your team slug: `TURBO_TEAM = ` ____________________
+- [x] Run locally: `npx turbo login && npx turbo link`
+- [x] Go to [vercel.com/account/tokens](https://vercel.com/account/tokens) and create a token
+- [x] Note: `TURBO_TOKEN = ` _(configured in GitHub Secrets)_
+- [x] Note your team slug: `TURBO_TEAM = crossfitapp`
 
 ---
 
@@ -242,11 +242,11 @@ Double-check that `CORS_ORIGINS` on the backend includes your Vercel domain.
 ## Step 8: Verify the Full Pipeline
 
 ### Local development
-- [ ] `pnpm install` completes without errors
-- [ ] `docker compose up redis -d` starts Redis
-- [ ] `pnpm dev` starts both apps
-- [ ] Login page loads at `http://localhost:3000`
-- [ ] Health check passes: `curl http://localhost:8000/api/v1/health`
+- [x] `pnpm install` completes without errors
+- [x] `docker compose up redis -d` starts Redis
+- [x] `pnpm dev` starts both apps
+- [x] Login page loads at `http://localhost:3000`
+- [x] Health check passes: `curl http://localhost:8000/api/v1/health`
 
 ### CI pipeline
 - [ ] Create a branch, make a change, open a PR
