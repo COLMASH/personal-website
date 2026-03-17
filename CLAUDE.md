@@ -46,8 +46,15 @@ personal-website/
 - `pnpm lint` — Lint all apps
 - `pnpm format` — Format all apps
 - `pnpm check-types` — Type-check all apps
-- `pnpm test` — Run all tests
+- `pnpm test` — Run all tests (frontend + backend)
 - `pnpm test:api` — Run backend tests only
+- `pnpm check-format` — Check Prettier formatting across all apps
+- `pnpm check-lint` — Check ESLint across all apps (no auto-fix)
+- `pnpm setup` — Full project setup (install deps, link .env, generate Prisma, run migrations)
+- `pnpm db:setup` — Link .env files, install API deps, generate Prisma client, run migrations
+- `pnpm db:studio` — Open Prisma Studio GUI
+- `pnpm start` — Start Redis container and all apps in dev mode
+- `pnpm stop` — Stop all Docker containers
 
 ### Frontend (from apps/web)
 - `pnpm dev` — Start dev server on port 3000
@@ -88,6 +95,11 @@ personal-website/
 - Use named exports, not default exports (except Next.js pages)
 - All environment variables go in `.env` (copied from `.env.example`)
 - Never commit `.env` files
+- **Screaming folder architecture**: Features live in `features/[feature-name]/` with subfolders for `types/`, `api/`, `hooks/`, `components/`, `__tests__/`
+- **API calls**: Always use `apiClient` from `@/lib/api-client` — never raw `fetch`
+- **Server state**: Always use TanStack Query (`queryOptions`, `useMutation`) — never raw `useEffect` + `useState` for API data
+- **UI components**: Use shadcn/ui components from `@/components/ui/` — never raw HTML elements for standard UI patterns
+- **State management**: Zustand for client state, TanStack Query for server state
 
 ### Backend (NestJS)
 - Follow NestJS module structure: `module.ts`, `controller.ts`, `service.ts`, `dto/`, `guards/`
@@ -118,6 +130,8 @@ personal-website/
 - Max line width: 100 characters
 
 ### Git
+- **Branching**: `main` is protected — no direct pushes or force pushes; changes via PR only
+- **Workflow**: `develop` is the working branch → PR to `main`
 - Conventional commits: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `test:`
 - Pre-commit hook runs lint-staged (Prettier + ESLint)
 - Keep commits small and focused
@@ -126,3 +140,6 @@ personal-website/
 - Backend: Jest for unit and e2e tests
 - Frontend: Vitest + React Testing Library (if configured)
 - Test files live next to the code they test (`*.spec.ts` or `*.test.ts`)
+- Every frontend and API feature must include tests
+- Frontend feature tests go in `features/[feature]/__tests__/`
+- Backend follows NestJS recommended folder structure — each module must include tests (`*.spec.ts` colocated within the module)
