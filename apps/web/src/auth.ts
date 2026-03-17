@@ -38,8 +38,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                     }
 
                     const data = await res.json()
+                    const token = data.data?.accessToken ?? data.accessToken ?? data.access_token
                     const userRes = await fetch(`${apiUrl}/api/v1/auth/me`, {
-                        headers: { Authorization: `Bearer ${data.access_token}` }
+                        headers: { Authorization: `Bearer ${token}` }
                     })
 
                     if (!userRes.ok) {
@@ -54,13 +55,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                         return null
                     }
 
-                    const user = await userRes.json()
+                    const userJson = await userRes.json()
+                    const user = userJson.data ?? userJson
                     return {
                         id: user.id,
                         email: user.email,
                         name: user.name,
                         image: user.image,
-                        accessToken: data.access_token,
+                        accessToken: token,
                         role: user.role
                     }
                 } catch (error) {
