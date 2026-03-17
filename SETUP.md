@@ -29,7 +29,7 @@ You need accounts on these services (all have free tiers):
   git remote add origin git@github.com:COLMASH/personal-website.git
   git push -u origin main
   ```
-- [ ] Enable GitHub Container Registry (GHCR) — it's on by default for public repos. For private repos, go to **Settings → Packages** and ensure packages are enabled.
+- [x] Enable GitHub Container Registry (GHCR) — it's on by default for public repos. For private repos, go to **Settings → Packages** and ensure packages are enabled.
 - [x] Domain: `mashconsultancy.com` (purchased via Cloudflare)
 
 ---
@@ -94,15 +94,15 @@ Create **two** Sentry projects under the same organization:
 - [x] Created `.env` with production values
 
 ### Generate deployment SSH key
-- [ ] On your **local machine**, generate a key pair for CI/CD:
+- [x] On your **local machine**, generate a key pair for CI/CD:
   ```bash
-  ssh-keygen -t ed25519 -f ~/.ssh/personal-website-deploy -C "github-actions-deploy"
+  ssh-keygen -t ed25519 -f ~/.ssh/github-actions-personal-website -C "github-actions-deploy"
   ```
-- [ ] Add the **public** key to the VPS:
+- [x] Add the **public** key to the VPS:
   ```bash
-  ssh-copy-id -i ~/.ssh/personal-website-deploy.pub deploy@{VPS_HOST}
+  ssh-copy-id -i ~/.ssh/github-actions-personal-website.pub miguel@178.156.248.254
   ```
-- [ ] The **private** key content goes into GitHub Secrets as `VPS_SSH_KEY`
+- [x] The **private** key content goes into GitHub Secrets as `VPS_SSH_KEY`
 
 ### Start infrastructure services
 - [x] All services running via `docker compose up -d` (Nginx, API, Redis)
@@ -181,7 +181,7 @@ Create **two** Sentry projects under the same organization:
 
 ### Backend (.env.production on VPS)
 
-SSH into your VPS and create `/opt/personal-website/.env.production`:
+SSH into your VPS and create `~/personal-website/.env`:
 
 ```env
 # ---------- Database ----------
@@ -254,11 +254,11 @@ Double-check that `CORS_ORIGINS` on the backend includes your Vercel domain.
 - [ ] Verify Vercel preview deployment appears on the PR
 
 ### Production deployment
-- [ ] Merge the PR to `main`
-- [ ] Verify Vercel production deployment succeeds
-- [ ] Verify GitHub Actions deploys backend to VPS
-- [ ] Verify backend health: `curl https://api.{your-domain}.com/api/v1/health`
-- [ ] Verify frontend loads and can reach backend
+- [x] Merge the PR to `main`
+- [x] Verify Vercel production deployment succeeds
+- [x] Verify GitHub Actions deploys backend to VPS
+- [x] Verify backend health: `curl https://api.mashconsultancy.com/api/v1/health`
+- [x] Verify frontend loads and can reach backend
 
 ### Monitoring
 - [ ] Trigger a test error on frontend — verify it appears in Sentry
