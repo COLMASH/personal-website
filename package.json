@@ -17,8 +17,12 @@
     "docker:up": "docker compose up --build",
     "docker:down": "docker compose down",
     "docker:reset": "docker compose down -v && docker compose up --build",
-    "db:migrate": "cd apps/api && npx prisma migrate deploy",
-    "db:revision": "cd apps/api && npx prisma migrate dev --name"
+    "db:migrate": "cd apps/api && DATABASE_URL=file:./dev.db npx prisma migrate deploy",
+    "db:revision": "cd apps/api && DATABASE_URL=file:./dev.db npx prisma migrate dev --name",
+    "db:studio": "cd apps/api && DATABASE_URL=file:./dev.db npx prisma studio",
+    "db:setup": "cd apps/api && npm install && DATABASE_URL=file:./dev.db npx prisma generate && DATABASE_URL=file:./dev.db npx prisma migrate dev",
+    "setup": "pnpm install && pnpm db:setup && echo 'Done! Run: pnpm start'",
+    "start": "docker compose up redis -d && pnpm dev"
   },
   "packageManager": "pnpm@9.15.0",
   "engines": {
