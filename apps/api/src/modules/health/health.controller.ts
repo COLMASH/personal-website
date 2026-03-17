@@ -8,7 +8,6 @@ import {
 import { ApiTags, ApiOperation } from '@nestjs/swagger'
 import { Public } from '../../common/decorators/public.decorator'
 import { PrismaHealthIndicator } from './prisma.health'
-import { PrismaService } from '../../prisma/prisma.service'
 
 @ApiTags('health')
 @Controller('health')
@@ -17,26 +16,8 @@ export class HealthController {
         private health: HealthCheckService,
         private db: PrismaHealthIndicator,
         private memory: MemoryHealthIndicator,
-        private disk: DiskHealthIndicator,
-        private prisma: PrismaService
+        private disk: DiskHealthIndicator
     ) {}
-
-    @Public()
-    @Get('ci-test')
-    @ApiOperation({ summary: 'CI/CD pipeline test endpoint' })
-    async ciTest() {
-        const row = await this.prisma.ciTest.upsert({
-            where: { id: 'ci-smoke-test' },
-            update: { checkedAt: new Date() },
-            create: { id: 'ci-smoke-test', status: true }
-        })
-        return {
-            status: 'ok',
-            ciTest: true,
-            dbWrite: true,
-            timestamp: row.checkedAt.toISOString()
-        }
-    }
 
     @Public()
     @Get()

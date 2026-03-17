@@ -24,6 +24,5 @@ export async function createTestApp(): Promise<INestApplication> {
 export async function cleanDatabase(app: INestApplication): Promise<void> {
     const prisma = app.get(PrismaService)
     // Add tables in reverse dependency order
-    await prisma.ciTest.deleteMany()
     await prisma.user.deleteMany()
 }
