@@ -18,10 +18,12 @@ WORKDIR /app
 ENV NODE_ENV=production
 COPY apps/api/package.json apps/api/package-lock.json* ./
 RUN npm ci --omit=dev
-COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
-COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
 COPY apps/api/prisma ./prisma
+COPY apps/api/prisma.config.ts ./prisma.config.ts
 COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/src/generated ./src/generated
+COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
+COPY --from=builder /app/node_modules/@prisma/engines ./node_modules/@prisma/engines
 RUN addgroup --system --gid 1001 appgroup && \
     adduser --system --uid 1001 --ingroup appgroup appuser && \
     mkdir -p /app/data && \

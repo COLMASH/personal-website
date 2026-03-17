@@ -4,7 +4,7 @@ import * as bcrypt from 'bcrypt'
 import { PrismaService } from '../../prisma/prisma.service'
 import { SignupDto } from './dto/signup.dto'
 import { TokenResponseDto } from './dto/token-response.dto'
-import { User } from '@prisma/client'
+import { User } from '@/generated/prisma'
 import { ConfigService } from '@nestjs/config'
 import { AppConfig } from '../../config/app.config'
 
