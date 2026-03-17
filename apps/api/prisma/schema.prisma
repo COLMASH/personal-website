@@ -42,3 +42,15 @@ model Post {
 
   @@map("posts")
 }
+
+// ============================================
+// CI/CD Smoke Test (temporary — delete after validation)
+// ============================================
+
+model CiTest {
+  id        String   @id @default(uuid())
+  status    Boolean  @default(true)
+  checkedAt DateTime @default(now()) @map("checked_at")
+
+  @@map("ci_tests")
+}

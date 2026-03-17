@@ -1,0 +1,6 @@
+-- CreateTable
+CREATE TABLE "ci_tests" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "status" BOOLEAN NOT NULL DEFAULT true,
+    "checked_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
