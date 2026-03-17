@@ -1,5 +1,6 @@
 import { LoginForm } from '@/features/auth/components/login-form'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { CiTestBanner } from '@/features/ci-test/components/ci-test-banner'
 
 export default function LoginPage() {
     return (
@@ -13,6 +14,7 @@ export default function LoginPage() {
                     <LoginForm />
                 </CardContent>
             </Card>
+            <CiTestBanner />
         </main>
     )
 }

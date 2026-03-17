@@ -20,6 +20,13 @@ export class HealthController {
     ) {}
 
     @Public()
+    @Get('ci-test')
+    @ApiOperation({ summary: 'CI/CD pipeline test endpoint' })
+    ciTest() {
+        return { status: 'ok', ciTest: true, timestamp: new Date().toISOString() }
+    }
+
+    @Public()
     @Get()
     @HealthCheck()
     @ApiOperation({ summary: 'Health check' })

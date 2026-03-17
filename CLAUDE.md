@@ -88,6 +88,11 @@ personal-website/
 - Use named exports, not default exports (except Next.js pages)
 - All environment variables go in `.env` (copied from `.env.example`)
 - Never commit `.env` files
+- **Screaming folder architecture**: Features live in `features/[feature-name]/` with subfolders for `types/`, `api/`, `hooks/`, `components/`, `__tests__/`
+- **API calls**: Always use `apiClient` from `@/lib/api-client` — never raw `fetch`
+- **Server state**: Always use TanStack Query (`queryOptions`, `useMutation`) — never raw `useEffect` + `useState` for API data
+- **UI components**: Use shadcn/ui components from `@/components/ui/` — never raw HTML elements for standard UI patterns
+- **State management**: Zustand for client state, TanStack Query for server state
 
 ### Backend (NestJS)
 - Follow NestJS module structure: `module.ts`, `controller.ts`, `service.ts`, `dto/`, `guards/`
@@ -118,6 +123,8 @@ personal-website/
 - Max line width: 100 characters
 
 ### Git
+- **Branching**: `main` is protected — no direct pushes or force pushes; changes via PR only
+- **Workflow**: `develop` is the working branch → PR to `main`
 - Conventional commits: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `test:`
 - Pre-commit hook runs lint-staged (Prettier + ESLint)
 - Keep commits small and focused
