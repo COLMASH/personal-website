@@ -90,7 +90,6 @@ coverage/
 # ===========================================
 apps/api/prisma/*.db
 apps/api/prisma/*.db-journal
-apps/api/src/generated/
 
 # ===========================================
 # Next.js

@@ -8,7 +8,7 @@ import { UserResponseDto } from './dto/user-response.dto'
 import { LocalAuthGuard } from './guards/local-auth.guard'
 import { Public } from '../../common/decorators/public.decorator'
 import { CurrentUser } from '../../common/decorators/current-user.decorator'
-import { User } from '@/generated/prisma'
+import { User } from '@prisma/client'
 
 @ApiTags('auth')
 @Controller({ path: 'auth', version: '1' })

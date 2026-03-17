@@ -31,6 +31,6 @@ export default [
         }
     },
     {
-        ignores: ['dist/', 'node_modules/', 'src/generated/', 'eslint.config.mjs']
+        ignores: ['dist/', 'node_modules/', 'eslint.config.mjs']
     }
 ]

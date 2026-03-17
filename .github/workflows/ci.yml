@@ -32,7 +32,6 @@ jobs:
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter api exec prisma generate
       - run: pnpm lint
       - run: pnpm check-types
 
@@ -59,7 +58,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DATABASE_URL: file:./prisma/test.db
+      DATABASE_URL: file:./test.db
 
     steps:
       - uses: actions/checkout@v4
