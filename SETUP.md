@@ -161,19 +161,19 @@ Create **two** Sentry projects under the same organization:
 
 ### Environments (Settings → Environments)
 
-- [ ] Create a **production** environment
-- [ ] Add required reviewers (optional — adds deploy approval gate)
-- [ ] Restrict to `main` branch only
+- [x] Create a **production** environment
+- [x] Add required reviewers (optional — set to 0 for solo project)
+- [x] Restrict to `main` branch only
 
 ### Branch Protection (Settings → Branches → Add rule for `main`)
 
-- [ ] Require a pull request before merging
-- [ ] Required approvals: **1**
+- [x] Require a pull request before merging
+- [x] Required approvals: **0** (solo project)
 - [ ] Dismiss stale pull request approvals when new commits are pushed
-- [ ] Require status checks to pass: **Lint & Type Check**, **Test Frontend**, **Test Backend**
+- [x] Require status checks to pass: **Lint & Type Check**, **Test Frontend**, **Test Backend**
 - [ ] Require branches to be up to date before merging
 - [ ] Do not allow bypassing the above settings
-- [ ] Disallow force pushes
+- [x] Disallow force pushes
 
 ---
 
