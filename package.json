@@ -20,7 +20,7 @@
     "db:migrate": "cd apps/api && npx prisma migrate deploy",
     "db:revision": "cd apps/api && npx prisma migrate dev --name",
     "db:studio": "cd apps/api && npx prisma studio",
-    "db:setup": "ln -sf ../../.env apps/api/.env && cd apps/api && npm install && npx prisma generate && npx prisma migrate dev",
+    "db:setup": "ln -sf ../../.env apps/api/.env && ln -sf ../../.env apps/web/.env && cd apps/api && npm install && npx prisma generate && npx prisma migrate dev",
     "setup": "pnpm install && pnpm db:setup && echo 'Done! Run: pnpm start'",
     "start": "docker compose up redis -d && pnpm dev",
     "stop": "docker compose down"
