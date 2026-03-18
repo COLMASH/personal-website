@@ -3,7 +3,7 @@ import { PrismaService } from '../../prisma/prisma.service'
 import { CreatePostDto } from './dto/create-post.dto'
 import { UpdatePostDto } from './dto/update-post.dto'
 import { PaginationDto, PaginatedResponse } from '../../common/dto/pagination.dto'
-import { Post } from '@prisma/client'
+import { Post } from '@/generated/prisma/client'
 
 const ALLOWED_SORT_COLUMNS = new Set(['name', 'createdAt', 'updatedAt'])
 
