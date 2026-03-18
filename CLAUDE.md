@@ -131,8 +131,8 @@ personal-website/
 - Max line width: 100 characters
 
 ### Git
-- **Branching**: `main` is protected — no direct pushes or force pushes; changes via PR only
-- **Workflow**: `develop` is the working branch → PR to `main`
+- **Branching**: Direct pushes to `main` are allowed (solo project)
+- **Workflow**: Work on `develop` or feature branches, merge/push to `main` directly
 - Conventional commits: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `test:`
 - Pre-commit hook runs lint-staged (Prettier + ESLint)
 - Keep commits small and focused
