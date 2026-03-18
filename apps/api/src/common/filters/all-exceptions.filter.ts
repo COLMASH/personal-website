@@ -61,7 +61,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
                 },
                 extra: { statusCode: status, message }
             })
-        } else if (status >= 400 && status !== 401) {
+        } else if (status >= 400 && status !== 401 && status !== 404) {
             Sentry.captureMessage(`${request.method} ${request.url} — ${status}: ${message}`, {
                 level: 'warning',
                 tags: { 'error.type': 'api', 'api.status': String(status) },

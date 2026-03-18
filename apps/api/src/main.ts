@@ -16,6 +16,10 @@ async function bootstrap() {
     // Security headers
     app.use(helmet())
 
+    // Trust first proxy (nginx) — required for correct IP in rate limiting & logs
+    const expressApp = app.getHttpAdapter().getInstance()
+    expressApp.set('trust proxy', 1)
+
     // CORS — strict origin list from env
     app.enableCors({
         origin: process.env.CORS_ORIGINS?.split(',') ?? ['http://localhost:3000'],

@@ -15,6 +15,17 @@ Sentry.init({
         if (event.request) {
             delete event.request.cookies
         }
+        // Drop scanner/bot noise
+        const url = event.request?.url ?? ''
+        if (
+            /\.(php|asp|aspx|jsp|cgi|env)(\?|$)/i.test(url) ||
+            /wp-admin|wp-login|phpunit|eval-stdin|thinkphp|actuator|phpmyadmin|xmlrpc|\.git|\.aws|\.docker|containers\/json/i.test(
+                url
+            )
+        ) {
+            return null
+        }
+
         return event
     }
 })
