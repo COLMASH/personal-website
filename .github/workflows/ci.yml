@@ -35,6 +35,19 @@ jobs:
       - run: pnpm lint
       - run: pnpm check-types
 
+  check-lockfile:
+    name: Check API Lockfile
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Verify package-lock.json is in sync
+        run: cd apps/api && npm install --package-lock-only && git diff --exit-code package-lock.json
+
   test-frontend:
     name: Test Frontend
     runs-on: ubuntu-latest

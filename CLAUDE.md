@@ -77,6 +77,7 @@ personal-website/
 - `pnpm docker:up` — Build and start all containers
 - `pnpm docker:down` — Stop containers
 - `pnpm docker:reset` — Reset volumes and rebuild
+- **Important**: The API Dockerfile uses `npm ci` with `apps/api/package-lock.json`. After changing API deps, run `pnpm api:sync-lock` to regenerate the lockfile. CI will fail if it's out of sync.
 
 ### Database
 - `pnpm db:migrate` — Deploy migrations via Prisma
