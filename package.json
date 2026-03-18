@@ -17,6 +17,7 @@
     "docker:up": "docker compose up --build",
     "docker:down": "docker compose down",
     "docker:reset": "docker compose down -v && docker compose up --build",
+    "api:sync-lock": "cd apps/api && npm install --package-lock-only",
     "db:migrate": "cd apps/api && npx prisma migrate deploy",
     "db:revision": "cd apps/api && npx prisma migrate dev --name && npx prisma generate",
     "db:studio": "cd apps/api && npx prisma studio",
