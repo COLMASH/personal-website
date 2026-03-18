@@ -60,7 +60,15 @@ import { appConfig, AppConfig } from './config/app.config'
             useFactory: async (config: ConfigService) => {
                 const redisUrl = config.get<AppConfig>('app')!.redisUrl
                 if (!redisUrl) return {}
-                return { store: await redisStore({ url: redisUrl, ttl: 60000 }) }
+                return {
+                    store: await redisStore({
+                        url: redisUrl,
+                        ttl: 60000,
+                        socket: {
+                            reconnectStrategy: (retries: number) => Math.min(retries * 100, 5000)
+                        }
+                    })
+                }
             }
         }),
 
