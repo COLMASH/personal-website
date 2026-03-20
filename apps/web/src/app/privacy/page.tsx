@@ -5,8 +5,8 @@ import { Navigation } from '@/features/landing/components/navigation'
 import { Footer } from '@/features/landing/components/footer'
 
 export const metadata: Metadata = {
-    title: 'Privacy Policy | MASH AI',
-    description: 'Privacy Policy for MASH AI — how we collect, use, and protect your data.'
+    title: 'Privacy Policy | Santana AI',
+    description: 'Privacy Policy for Santana AI — how we collect, use, and protect your data.'
 }
 
 export default function PrivacyPage() {

@@ -5,8 +5,8 @@ import { Navigation } from '@/features/landing/components/navigation'
 import { Footer } from '@/features/landing/components/footer'
 
 export const metadata: Metadata = {
-    title: 'Terms of Service | MASH AI',
-    description: 'Terms of Service for MASH AI — AI Solutions Architect & Full-Stack Developer.'
+    title: 'Terms of Service | Santana AI',
+    description: 'Terms of Service for Santana AI — AI Solutions Architect & Full-Stack Developer.'
 }
 
 export default function TermsPage() {
@@ -29,17 +29,17 @@ export default function TermsPage() {
                     <section>
                         <h2 className="mb-3 text-xl font-semibold">Overview</h2>
                         <p className="text-muted-foreground leading-relaxed">
-                            By using mash-ai.dev you agree to these terms. If you don&apos;t agree,
-                            please don&apos;t use the site.
+                            By using santanaai.com you agree to these terms. If you don&apos;t
+                            agree, please don&apos;t use the site.
                         </p>
                     </section>
 
                     <section>
                         <h2 className="mb-3 text-xl font-semibold">Services</h2>
                         <p className="text-muted-foreground leading-relaxed">
-                            MASH AI provides AI consulting, agentic systems development, full-stack
-                            engineering, blockchain solutions, and engineering consulting services.
-                            Specific deliverables, timelines, and pricing are agreed upon
+                            Santana AI provides AI consulting, agentic systems development,
+                            full-stack engineering, blockchain solutions, and engineering consulting
+                            services. Specific deliverables, timelines, and pricing are agreed upon
                             individually before any work begins.
                         </p>
                     </section>
@@ -48,9 +48,9 @@ export default function TermsPage() {
                         <h2 className="mb-3 text-xl font-semibold">Intellectual Property</h2>
                         <p className="text-muted-foreground leading-relaxed">
                             All content on this website — including text, design, code templates,
-                            and technical documentation — is owned by MASH AI. You may use materials
-                            provided to you through our engagements for your own business, but you
-                            may not resell or redistribute them.
+                            and technical documentation — is owned by Santana AI. You may use
+                            materials provided to you through our engagements for your own business,
+                            but you may not resell or redistribute them.
                         </p>
                     </section>
 
@@ -66,7 +66,7 @@ export default function TermsPage() {
                     <section>
                         <h2 className="mb-3 text-xl font-semibold">Limitation of Liability</h2>
                         <p className="text-muted-foreground leading-relaxed">
-                            MASH AI is not liable for any indirect, incidental, or consequential
+                            Santana AI is not liable for any indirect, incidental, or consequential
                             damages arising from your use of our website or services. Our total
                             liability is limited to the amount you&apos;ve paid us for services.
                         </p>

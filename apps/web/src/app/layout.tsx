@@ -11,7 +11,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-    title: 'MASH AI | AI Solutions Architect & Full-Stack Developer',
+    title: 'Santana AI | AI Solutions Architect & Full-Stack Developer',
     description:
         'From autonomous AI agents to industrial-scale engineering — 15+ years of turning complex problems into elegant solutions. AI, Full-Stack, Blockchain, Engineering & Project Management.',
     keywords: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         'Project Management'
     ],
     openGraph: {
-        title: 'MASH AI | AI Solutions Architect & Full-Stack Developer',
+        title: 'Santana AI | AI Solutions Architect & Full-Stack Developer',
         description:
             'From autonomous AI agents to industrial-scale engineering — 15+ years of turning complex problems into elegant solutions.',
         type: 'website'

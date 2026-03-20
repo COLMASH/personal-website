@@ -65,7 +65,7 @@ function BrowserDemo() {
                 <span className="bg-dot-yellow/60 h-2 w-2 rounded-full" />
                 <span className="bg-dot-green/60 h-2 w-2 rounded-full" />
                 <div className="bg-background/60 text-muted-foreground text-2xs ml-2 flex-1 rounded-sm px-2 py-0.5">
-                    mash-ai.dev
+                    santanaai.com
                 </div>
             </div>
             <div className="border-border flex flex-1 flex-col gap-2 rounded-b-lg border border-t-0 p-3">

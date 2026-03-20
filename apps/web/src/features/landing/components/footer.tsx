@@ -47,7 +47,7 @@ export function Footer() {
                     {/* Column 1: Brand + Social icons */}
                     <div>
                         <p className="flex items-baseline gap-1.5 text-lg font-extrabold">
-                            <span className="tracking-widest">MASH</span>
+                            <span className="tracking-widest">SANTANA</span>
                             <span className="text-brand-accent">AI</span>
                         </p>
                         <p className="text-muted-foreground mt-3 text-sm">
@@ -140,7 +140,7 @@ export function Footer() {
                 {/* Bottom bar */}
                 <div className="border-border mt-12 flex flex-col items-center justify-between border-t pt-8 md:flex-row">
                     <p className="text-muted-foreground/60 text-sm">
-                        &copy; 2026 MASH AI. All rights reserved.
+                        &copy; 2026 Santana AI. All rights reserved.
                     </p>
                     <div className="mt-4 flex gap-6 md:mt-0">
                         <Link

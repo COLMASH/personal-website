@@ -61,7 +61,7 @@ export function Navigation() {
                     className="flex items-baseline gap-1.5"
                 >
                     <span className="text-foreground text-xl font-extrabold tracking-widest">
-                        MASH
+                        SANTANA
                     </span>
                     <span className="text-brand-accent text-xl font-extrabold">AI</span>
                 </a>

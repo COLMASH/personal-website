@@ -3,10 +3,10 @@ import { render, screen } from '@testing-library/react'
 import { Navigation } from '../components/navigation'
 
 describe('Navigation', () => {
-    it('renders with MASH AI logo text', () => {
+    it('renders with Santana AI logo text', () => {
         render(<Navigation />)
 
-        expect(screen.getByText('MASH')).toBeInTheDocument()
+        expect(screen.getByText('SANTANA')).toBeInTheDocument()
         expect(screen.getByText('AI')).toBeInTheDocument()
     })
 

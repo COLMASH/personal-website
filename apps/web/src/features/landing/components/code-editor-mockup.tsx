@@ -25,7 +25,7 @@ function FileExplorerPanel() {
                 <span className="bg-dot-yellow h-3 w-3 rounded-full" />
                 <span className="bg-dot-green h-3 w-3 rounded-full" />
                 <span className="text-muted-foreground ml-2 text-xs font-semibold tracking-wide">
-                    MASH AI
+                    Santana AI
                 </span>
             </div>
 
@@ -88,7 +88,7 @@ function CodePanel() {
                     <span className="text-foreground">tools</span>{' '}
                     <span className="text-muted-foreground">{'}'}</span>{' '}
                     <span className="text-brand-teal">from</span>{' '}
-                    <span className="text-brand-accent">&apos;@mash-ai/sdk&apos;</span>
+                    <span className="text-brand-accent">&apos;@santana-ai/sdk&apos;</span>
                 </>
             )
         },
@@ -112,7 +112,7 @@ function CodePanel() {
                 <span className="pl-4">
                     <span className="text-brand-teal">name</span>
                     <span className="text-muted-foreground">: </span>
-                    <span className="text-brand-accent">&apos;MASH AI Assistant&apos;</span>
+                    <span className="text-brand-accent">&apos;Santana AI Assistant&apos;</span>
                     <span className="text-muted-foreground">,</span>
                 </span>
             )

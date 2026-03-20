@@ -11,17 +11,17 @@ vi.mock('framer-motion', () => ({
 import { Footer } from '../components/footer'
 
 describe('Footer', () => {
-    it('renders the MASH AI logo', () => {
+    it('renders the Santana AI logo', () => {
         render(<Footer />)
 
-        expect(screen.getByText('MASH')).toBeInTheDocument()
+        expect(screen.getByText('SANTANA')).toBeInTheDocument()
         expect(screen.getByText('AI')).toBeInTheDocument()
     })
 
     it('renders copyright text', () => {
         render(<Footer />)
 
-        expect(screen.getByText(/© 2026 MASH AI\. All rights reserved\./)).toBeInTheDocument()
+        expect(screen.getByText(/© 2026 Santana AI\. All rights reserved\./)).toBeInTheDocument()
     })
 
     it('renders social links', () => {

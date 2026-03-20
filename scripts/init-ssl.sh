@@ -4,7 +4,7 @@
 
 set -e
 
-DOMAIN="mashconsultancy.com"
+DOMAIN="santanaai.com"
 EMAIL="${1:?Usage: ./init-ssl.sh your@email.com}"
 
 echo "==> Starting Nginx with temporary config for SSL verification..."
