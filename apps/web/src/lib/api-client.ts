@@ -1,5 +1,4 @@
 import * as Sentry from '@sentry/nextjs'
-import { getSession } from 'next-auth/react'
 import { env } from '@/env'
 
 export class ApiError extends Error {
@@ -21,13 +20,9 @@ export class ApiError extends Error {
 export async function apiClient<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
     const method = options.method ?? 'GET'
 
-    const session = await getSession()
     const headers = new Headers(options.headers)
     if (options.body && !(options.body instanceof FormData)) {
         headers.set('Content-Type', 'application/json')
-    }
-    if (session?.accessToken) {
-        headers.set('Authorization', `Bearer ${session.accessToken}`)
     }
 
     Sentry.addBreadcrumb({
@@ -87,15 +82,10 @@ function classifyAndReportError(error: ApiError): void {
             extra: { errorDetail: truncatedDetail },
             fingerprint
         })
-    } else if (error.status === 401) {
-        Sentry.addBreadcrumb({
-            category: 'auth',
-            message: `Unauthorized: ${error.method} ${error.endpoint}`,
-            level: 'warning'
-        })
     } else if (error.status >= 400) {
         const statusCategories: Record<number, string> = {
             400: 'bad_request',
+            401: 'unauthorized',
             403: 'forbidden',
             404: 'not_found',
             429: 'rate_limited'

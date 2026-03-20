@@ -1,5 +1,4 @@
 import { QueryClient, QueryCache, MutationCache } from '@tanstack/react-query'
-import { signOut } from 'next-auth/react'
 import { toast } from 'sonner'
 import { ApiError } from '@/lib/api-client'
 
@@ -16,14 +15,14 @@ export function createQueryClient(): QueryClient {
         },
         queryCache: new QueryCache({
             onError: error => {
-                if (error instanceof ApiError && error.status === 401) {
-                    signOut({ redirect: true, callbackUrl: '/' })
+                if (error instanceof ApiError) {
+                    toast.error(error.detail)
                 }
             }
         }),
         mutationCache: new MutationCache({
             onError: error => {
-                if (error instanceof ApiError && error.status !== 401) {
+                if (error instanceof ApiError) {
                     toast.error(error.detail)
                 }
             }

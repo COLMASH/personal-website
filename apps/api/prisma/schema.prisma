@@ -43,3 +43,22 @@ model Post {
 
   @@map("posts")
 }
+
+// ============================================
+// Contact Submissions
+// ============================================
+
+model ContactSubmission {
+  id          String   @id @default(uuid())
+  name        String
+  email       String
+  company     String?
+  services    String   // comma-separated: "ai,fullstack,blockchain"
+  budget      String?  // "under-10k", "10k-25k", "25k-50k", "50k+"
+  description String?
+  status      String   @default("NEW") // NEW, READ, REPLIED, ARCHIVED
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("contact_submissions")
+}

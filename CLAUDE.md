@@ -121,6 +121,7 @@ personal-website/
 - Colocate page-specific components with their route
 - Use `next/image` for all images
 - Use `next/link` for all internal navigation
+- **Semantic Tailwind v4**: Always use semantic Tailwind classes over arbitrary values. When a canonical utility exists (e.g. `h-75` over `h-[300px]`, `max-w-3/5` over `max-w-[60%]`, `blur-4xl` over `blur-[120px]`), use it. When no canonical exists, define a custom theme token in `globals.css` (e.g. `--blur-4xl: 120px`) rather than scattering arbitrary `[value]` syntax. Leave shadcn/ui component files (`components/ui/*`) as-is — they use arbitrary values intentionally.
 
 ### Code Style
 - Prettier handles formatting (see `.prettierrc`)

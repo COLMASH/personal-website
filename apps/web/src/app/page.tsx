@@ -1,18 +1,25 @@
-import { LoginForm } from '@/features/auth/components/login-form'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { InteractiveGrid } from '@/features/landing/components/interactive-grid'
+import { Navigation } from '@/features/landing/components/navigation'
+import { HeroSection } from '@/features/landing/components/hero-section'
+import { StatsBanner } from '@/features/landing/components/stats-banner'
+import { ServicesSection } from '@/features/landing/components/services-section'
+import { ApproachSection } from '@/features/landing/components/approach-section'
+import { ContactSection } from '@/features/landing/components/contact-section'
+import { Footer } from '@/features/landing/components/footer'
 
-export default function LoginPage() {
+export default function LandingPage() {
     return (
-        <main className="bg-background flex min-h-screen items-center justify-center">
-            <Card className="w-full max-w-md">
-                <CardHeader className="text-center">
-                    <CardTitle className="text-3xl font-bold">personal-website</CardTitle>
-                    <CardDescription>Sign in to your account</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <LoginForm />
-                </CardContent>
-            </Card>
-        </main>
+        <>
+            <Navigation />
+            <main>
+                <InteractiveGrid />
+                <HeroSection />
+                <StatsBanner />
+                <ServicesSection />
+                <ApproachSection />
+                <ContactSection />
+            </main>
+            <Footer />
+        </>
     )
 }

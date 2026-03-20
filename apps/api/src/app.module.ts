@@ -13,6 +13,7 @@ import { PrismaModule } from './prisma/prisma.module'
 import { AuthModule } from './modules/auth/auth.module'
 import { HealthModule } from './modules/health/health.module'
 import { PostsModule } from './modules/posts/posts.module'
+import { ContactModule } from './modules/contact/contact.module'
 import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard'
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor'
 import { TransformInterceptor } from './common/interceptors/transform.interceptor'
@@ -84,7 +85,8 @@ import { appConfig, AppConfig } from './config/app.config'
         // Feature modules
         AuthModule,
         HealthModule,
-        PostsModule
+        PostsModule,
+        ContactModule
     ],
     providers: [
         // Global JWT guard — all routes require auth unless @Public()

@@ -4,78 +4,53 @@
 
 @theme inline {
     --radius: 0.625rem;
+    --text-2xs: 0.625rem;
+    --blur-4xl: 120px;
 
-    --color-background: oklch(1 0 0);
+    /* Brand colors */
+    --color-brand-accent: oklch(0.65 0.2 160);
+    --color-brand-accent-hover: oklch(0.55 0.22 160);
+    --color-brand-teal: oklch(0.6 0.15 180);
+    --color-brand-warm: oklch(0.7 0.12 90);
+    --color-brand-surface: oklch(0.99 0.005 150);
+
+    /* shadcn/ui design tokens */
+    --color-background: oklch(0.99 0.005 150);
     --color-foreground: oklch(0.145 0 0);
     --color-card: oklch(1 0 0);
     --color-card-foreground: oklch(0.145 0 0);
     --color-popover: oklch(1 0 0);
     --color-popover-foreground: oklch(0.145 0 0);
-    --color-primary: oklch(0.205 0 0);
-    --color-primary-foreground: oklch(0.985 0 0);
-    --color-secondary: oklch(0.97 0 0);
+    --color-primary: oklch(0.65 0.2 160);
+    --color-primary-foreground: oklch(1 0 0);
+    --color-secondary: oklch(0.97 0.005 150);
     --color-secondary-foreground: oklch(0.205 0 0);
-    --color-muted: oklch(0.97 0 0);
+    --color-muted: oklch(0.97 0.005 150);
     --color-muted-foreground: oklch(0.556 0 0);
-    --color-accent: oklch(0.97 0 0);
+    --color-accent: oklch(0.97 0.005 150);
     --color-accent-foreground: oklch(0.205 0 0);
     --color-destructive: oklch(0.577 0.245 27.325);
     --color-destructive-foreground: oklch(0.577 0.245 27.325);
-    --color-border: oklch(0.922 0 0);
-    --color-input: oklch(0.922 0 0);
-    --color-ring: oklch(0.708 0 0);
+    --color-border: oklch(0.922 0.005 150);
+    --color-input: oklch(0.922 0.005 150);
+    --color-ring: oklch(0.65 0.2 160);
 
-    --color-sidebar: oklch(0.985 0 0);
-    --color-sidebar-foreground: oklch(0.145 0 0);
-    --color-sidebar-primary: oklch(0.205 0 0);
-    --color-sidebar-primary-foreground: oklch(0.985 0 0);
-    --color-sidebar-accent: oklch(0.97 0 0);
-    --color-sidebar-accent-foreground: oklch(0.205 0 0);
-    --color-sidebar-border: oklch(0.922 0 0);
-    --color-sidebar-ring: oklch(0.708 0 0);
-
-    --color-chart-1: oklch(0.646 0.222 41.116);
-    --color-chart-2: oklch(0.6 0.118 184.704);
-    --color-chart-3: oklch(0.398 0.07 227.392);
+    --color-chart-1: oklch(0.65 0.2 160);
+    --color-chart-2: oklch(0.6 0.15 180);
+    --color-chart-3: oklch(0.7 0.12 90);
     --color-chart-4: oklch(0.828 0.189 84.429);
     --color-chart-5: oklch(0.769 0.188 70.08);
-}
 
-.dark {
-    --color-background: oklch(0.145 0 0);
-    --color-foreground: oklch(0.985 0 0);
-    --color-card: oklch(0.145 0 0);
-    --color-card-foreground: oklch(0.985 0 0);
-    --color-popover: oklch(0.145 0 0);
-    --color-popover-foreground: oklch(0.985 0 0);
-    --color-primary: oklch(0.985 0 0);
-    --color-primary-foreground: oklch(0.205 0 0);
-    --color-secondary: oklch(0.269 0 0);
-    --color-secondary-foreground: oklch(0.985 0 0);
-    --color-muted: oklch(0.269 0 0);
-    --color-muted-foreground: oklch(0.708 0 0);
-    --color-accent: oklch(0.269 0 0);
-    --color-accent-foreground: oklch(0.985 0 0);
-    --color-destructive: oklch(0.396 0.141 25.723);
-    --color-destructive-foreground: oklch(0.637 0.237 25.331);
-    --color-border: oklch(0.269 0 0);
-    --color-input: oklch(0.269 0 0);
-    --color-ring: oklch(0.439 0 0);
+    /* Traffic-light dot colors */
+    --color-dot-red: oklch(0.637 0.237 25.331);
+    --color-dot-yellow: oklch(0.795 0.184 86.047);
+    --color-dot-green: oklch(0.723 0.219 149.579);
 
-    --color-sidebar: oklch(0.205 0 0);
-    --color-sidebar-foreground: oklch(0.985 0 0);
-    --color-sidebar-primary: oklch(0.488 0.243 264.376);
-    --color-sidebar-primary-foreground: oklch(0.985 0 0);
-    --color-sidebar-accent: oklch(0.269 0 0);
-    --color-sidebar-accent-foreground: oklch(0.985 0 0);
-    --color-sidebar-border: oklch(0.269 0 0);
-    --color-sidebar-ring: oklch(0.439 0 0);
-
-    --color-chart-1: oklch(0.488 0.243 264.376);
-    --color-chart-2: oklch(0.696 0.17 162.48);
-    --color-chart-3: oklch(0.769 0.188 70.08);
-    --color-chart-4: oklch(0.627 0.265 303.9);
-    --color-chart-5: oklch(0.645 0.246 16.439);
+    /* Animation tokens */
+    --animate-blink: blink 1s step-end infinite;
+    --animate-float: float 6s ease-in-out infinite;
+    --animate-float-delayed: float 6s ease-in-out 2s infinite;
+    --animate-float-slow: float 8s ease-in-out 4s infinite;
 }
 
 @layer base {
@@ -83,6 +58,103 @@
         @apply border-border;
     }
     body {
-        @apply bg-background text-foreground;
+        @apply bg-background text-foreground antialiased;
+    }
+}
+
+/* Warm edge gradient — continuous across the full page */
+.warm-edge-gradient {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(ellipse 40% 70% at 0% 50%, oklch(0.88 0.06 30 / 0.12), transparent),
+        radial-gradient(ellipse 40% 70% at 100% 50%, oklch(0.88 0.06 30 / 0.12), transparent),
+        radial-gradient(ellipse 60% 40% at 0% 20%, oklch(0.9 0.05 40 / 0.08), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 80%, oklch(0.9 0.05 40 / 0.08), transparent);
+}
+
+@keyframes blink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Service card demo keyframes */
+@keyframes fade-in-up {
+    0% {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes browser-load {
+    0% {
+        width: 0%;
+    }
+    60% {
+        width: 100%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes block-pop {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes line-draw {
+    0% {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes needle-sweep {
+    0% {
+        transform: rotate(-90deg);
+    }
+    100% {
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes gauge-fill {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(0deg);
     }
 }
