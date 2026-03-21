@@ -76,11 +76,11 @@ export function ContactSection() {
                         {/* Email */}
                         <div className="mt-8">
                             <a
-                                href="mailto:mi_santa@hotmail.com"
+                                href="mailto:migangsant@gmail.com"
                                 className="text-brand-accent hover:text-brand-accent-hover inline-flex items-center gap-2 text-sm font-medium transition-colors"
                             >
                                 <Mail className="h-4 w-4" />
-                                mi_santa@hotmail.com
+                                migangsant@gmail.com
                             </a>
                         </div>
                     </motion.div>

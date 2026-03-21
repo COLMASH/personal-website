@@ -17,7 +17,7 @@ export class ContactService {
         })
 
         this.logger.log(`New contact submission from ${dto.name} (${dto.email})`)
-        this.logger.log('Email notification would be sent to mi_santa@hotmail.com')
+        this.logger.log('Email notification would be sent to migangsant@gmail.com')
 
         return {
             success: true,

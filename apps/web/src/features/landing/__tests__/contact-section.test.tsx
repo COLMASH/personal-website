@@ -62,6 +62,6 @@ describe('ContactSection', () => {
     it('renders email contact', () => {
         render(<ContactSection />)
 
-        expect(screen.getByText('mi_santa@hotmail.com')).toBeInTheDocument()
+        expect(screen.getByText('migangsant@gmail.com')).toBeInTheDocument()
     })
 })
