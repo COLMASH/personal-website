@@ -35,7 +35,7 @@ const socialLinks = [
     {
         icon: Mail,
         label: 'Email',
-        href: 'mailto:migangsant@gmail.com'
+        href: 'mailto:santanaai.co@gmail.com'
     }
 ]
 

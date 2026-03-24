@@ -78,10 +78,10 @@ export default function PrivacyPage() {
                             You can request to see, update, or delete any personal data we hold
                             about you. Just email us at{' '}
                             <a
-                                href="mailto:migangsant@gmail.com"
+                                href="mailto:santanaai.co@gmail.com"
                                 className="text-brand-accent hover:text-brand-accent-hover transition-colors"
                             >
-                                migangsant@gmail.com
+                                santanaai.co@gmail.com
                             </a>{' '}
                             and we&apos;ll take care of it.
                         </p>
@@ -92,10 +92,10 @@ export default function PrivacyPage() {
                         <p className="text-muted-foreground leading-relaxed">
                             Questions about this policy? Reach out at{' '}
                             <a
-                                href="mailto:migangsant@gmail.com"
+                                href="mailto:santanaai.co@gmail.com"
                                 className="text-brand-accent hover:text-brand-accent-hover transition-colors"
                             >
-                                migangsant@gmail.com
+                                santanaai.co@gmail.com
                             </a>
                         </p>
                     </section>
