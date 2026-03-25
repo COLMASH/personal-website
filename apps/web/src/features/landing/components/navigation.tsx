@@ -24,8 +24,14 @@ export function Navigation() {
     const [mobileOpen, setMobileOpen] = useState(false)
 
     useEffect(() => {
+        let ticking = false
         const handleScroll = () => {
-            setScrolled(window.scrollY > 50)
+            if (ticking) return
+            ticking = true
+            requestAnimationFrame(() => {
+                setScrolled(window.scrollY > 50)
+                ticking = false
+            })
         }
 
         window.addEventListener('scroll', handleScroll, { passive: true })

@@ -24,6 +24,7 @@ export function HeroSection() {
 
     useEffect(() => {
         const interval = setInterval(() => {
+            if (document.hidden) return
             setWordIndex(prev => (prev + 1) % accentWords.length)
         }, 3000)
         return () => clearInterval(interval)

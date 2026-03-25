@@ -73,7 +73,7 @@ function BrowserDemo() {
                     <div
                         className="bg-brand-accent/60 h-full rounded-full"
                         style={{
-                            animation: 'browser-load 2s ease-out infinite'
+                            animation: 'browser-load 2s ease-out forwards'
                         }}
                     />
                 </div>
