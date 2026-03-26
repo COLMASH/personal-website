@@ -5,32 +5,32 @@ export const approachSteps: ApproachStep[] = [
         number: 1,
         title: 'Discovery',
         description:
-            'Deep dive into your business context, technical landscape, and goals. We identify quick wins and long-term opportunities.',
-        deliverable: 'Assessment Report',
+            'We learn your business inside and out — your workflows, pain points, and goals — to find the highest-impact AI opportunities.',
+        deliverable: 'Typical: 2-3 Calls + Async Audit',
         timeline: 'Week 1'
     },
     {
         number: 2,
         title: 'Strategy',
         description:
-            'Architecture design, technology selection, and detailed roadmap with clear milestones and success metrics.',
-        deliverable: 'Technical Blueprint',
+            'We design the right solution with a clear roadmap, timeline, and ROI projection so you know exactly what to expect.',
+        deliverable: 'Deliverable: Technical Spec + ROI Model',
         timeline: 'Week 2'
     },
     {
         number: 3,
         title: 'Build',
         description:
-            'Agile development with weekly demos, continuous integration, and transparent progress tracking.',
-        deliverable: 'Working Product',
+            'We implement and integrate your AI solution with your existing tools and workflows. No disruption, just results.',
+        deliverable: 'Weekly Demos + Iterative Delivery',
         timeline: 'Weeks 3-8+'
     },
     {
         number: 4,
         title: 'Support',
         description:
-            'Post-launch monitoring, optimization, team training, and ongoing technical advisory.',
-        deliverable: 'Maintenance Plan',
+            'Ongoing optimization, monitoring, and scaling to make sure your AI keeps delivering as your business grows.',
+        deliverable: 'SLA-Backed Response Times',
         timeline: 'Ongoing'
     }
 ]

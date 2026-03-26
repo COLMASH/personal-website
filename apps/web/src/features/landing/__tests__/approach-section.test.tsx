@@ -33,10 +33,10 @@ describe('ApproachSection', () => {
     it('renders step deliverables', () => {
         render(<ApproachSection />)
 
-        expect(screen.getByText(/Assessment Report/)).toBeInTheDocument()
-        expect(screen.getByText(/Technical Blueprint/)).toBeInTheDocument()
-        expect(screen.getByText(/Working Product/)).toBeInTheDocument()
-        expect(screen.getByText(/Maintenance Plan/)).toBeInTheDocument()
+        expect(screen.getByText(/2-3 Calls \+ Async Audit/)).toBeInTheDocument()
+        expect(screen.getByText(/Technical Spec \+ ROI Model/)).toBeInTheDocument()
+        expect(screen.getByText(/Weekly Demos \+ Iterative Delivery/)).toBeInTheDocument()
+        expect(screen.getByText(/SLA-Backed Response Times/)).toBeInTheDocument()
     })
 
     it('renders step timelines', () => {
