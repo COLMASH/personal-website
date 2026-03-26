@@ -37,8 +37,7 @@ export function HeroSection() {
                 <div className="w-full text-center">
                     <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0 }}>
                         <span className="bg-brand-accent/10 text-brand-accent inline-block rounded-full px-4 py-1.5 text-sm font-medium">
-                            AI Engineering | End-to-End Software Development | Engineering
-                            Consulting
+                            AI Engineering | Software Development | Engineering Consulting
                         </span>
                     </motion.div>
 

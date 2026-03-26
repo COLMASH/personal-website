@@ -37,7 +37,7 @@ describe('ServicesSection', () => {
         render(<ServicesSection />)
 
         expect(screen.getByText(/Custom AI agents, RAG pipelines/)).toBeInTheDocument()
-        expect(screen.getByText(/End-to-end web applications/)).toBeInTheDocument()
+        expect(screen.getByText(/Web applications with modern frameworks/)).toBeInTheDocument()
     })
 
     it('renders service tags', () => {

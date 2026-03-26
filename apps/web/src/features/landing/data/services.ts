@@ -14,7 +14,7 @@ export const services: Service[] = [
         id: 'fullstack',
         title: 'Full-Stack Development',
         description:
-            'End-to-end web applications with modern frameworks, optimized for performance, scalability, and developer experience.',
+            'Web applications with modern frameworks, optimized for performance, scalability, and developer experience.',
         icon: 'Code2',
         tags: ['Next.js', 'React', 'NestJS', 'TypeScript', 'PostgreSQL'],
         demo: 'browser'
