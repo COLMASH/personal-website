@@ -6,8 +6,8 @@ describe('Navigation', () => {
     it('renders with Santana AI logo text', () => {
         render(<Navigation />)
 
-        expect(screen.getByText('SANTANA')).toBeInTheDocument()
-        expect(screen.getByText('AI')).toBeInTheDocument()
+        expect(screen.getByLabelText('SANTANA')).toBeInTheDocument()
+        expect(screen.getByLabelText('AI')).toBeInTheDocument()
     })
 
     it('renders Book a Call CTA', () => {

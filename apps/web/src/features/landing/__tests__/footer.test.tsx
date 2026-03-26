@@ -14,8 +14,8 @@ describe('Footer', () => {
     it('renders the Santana AI logo', () => {
         render(<Footer />)
 
-        expect(screen.getByText('SANTANA')).toBeInTheDocument()
-        expect(screen.getByText('AI')).toBeInTheDocument()
+        expect(screen.getByLabelText('SANTANA')).toBeInTheDocument()
+        expect(screen.getByLabelText('AI')).toBeInTheDocument()
     })
 
     it('renders copyright text', () => {

@@ -89,6 +89,12 @@
         radial-gradient(ellipse 40% 70% at 100% 50%, oklch(0.88 0.06 30 / 0.12), transparent);
 }
 
+/* Matrix text brand animation */
+.matrix-glow {
+    text-shadow: 0 0 8px oklch(0.65 0.2 160 / 0.6);
+    font-variant-numeric: tabular-nums;
+}
+
 @keyframes blink {
     0%,
     100% {

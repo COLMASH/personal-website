@@ -1,7 +1,6 @@
 import { InfiniteGrid } from '@/components/ui/the-infinite-grid'
 import { Navigation } from '@/features/landing/components/navigation'
 import { HeroSection } from '@/features/landing/components/hero-section'
-import { StatsBanner } from '@/features/landing/components/stats-banner'
 import { ServicesSection } from '@/features/landing/components/services-section'
 import { ApproachSection } from '@/features/landing/components/approach-section'
 import { ContactSection } from '@/features/landing/components/contact-section'
@@ -14,7 +13,6 @@ export default function LandingPage() {
             <main>
                 <InfiniteGrid />
                 <HeroSection />
-                <StatsBanner />
                 <ServicesSection />
                 <ApproachSection />
                 <ContactSection />

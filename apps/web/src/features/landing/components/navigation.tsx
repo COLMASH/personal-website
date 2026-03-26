@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { cn, smoothScrollTo } from '@/lib/utils'
+import { BrandLogo } from '@/components/brand-logo'
 
 const NAV_LINKS = [
     { label: 'Services', href: '#services' },
@@ -56,12 +57,8 @@ export function Navigation() {
                         e.preventDefault()
                         window.scrollTo({ top: 0, behavior: 'smooth' })
                     }}
-                    className="flex items-baseline gap-1.5"
                 >
-                    <span className="text-foreground text-xl font-extrabold tracking-widest">
-                        SANTANA
-                    </span>
-                    <span className="text-brand-accent text-xl font-extrabold">AI</span>
+                    <BrandLogo />
                 </a>
 
                 {/* Desktop links */}

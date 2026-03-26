@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Github, Linkedin, Mail, Twitter } from 'lucide-react'
+import { BrandLogo } from '@/components/brand-logo'
 
 const serviceLinks = [
     'AI & Agentic Solutions',
@@ -46,10 +47,7 @@ export function Footer() {
                 <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
                     {/* Column 1: Brand + Social icons */}
                     <div>
-                        <p className="flex items-baseline gap-1.5 text-lg font-extrabold">
-                            <span className="tracking-widest">SANTANA</span>
-                            <span className="text-brand-accent">AI</span>
-                        </p>
+                        <BrandLogo size="sm" initialDelay={0} />
                         <p className="text-muted-foreground mt-3 text-sm">
                             AI Solutions Architect &<br />
                             Full-Stack Developer

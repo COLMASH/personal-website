@@ -70,8 +70,8 @@ export function HeroSection() {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="text-muted-foreground mx-auto mt-8 max-w-lg text-lg leading-relaxed"
                     >
-                        From autonomous AI agents to industrial-scale engineering — 15+ years of
-                        turning complex problems into elegant solutions.
+                        We build custom AI agents, automations, and integrations that give your team
+                        back 10+ hours every week — from strategy to deployment, handled end to end.
                     </motion.p>
 
                     <motion.div
