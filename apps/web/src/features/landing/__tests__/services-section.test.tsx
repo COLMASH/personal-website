@@ -24,29 +24,25 @@ describe('ServicesSection', () => {
         expect(screen.getByText('Deliver Results')).toBeInTheDocument()
     })
 
-    it('renders all 4 service titles', () => {
+    it('renders all 7 service titles', () => {
         render(<ServicesSection />)
 
-        expect(screen.getByText('AI & Agentic Solutions')).toBeInTheDocument()
-        expect(screen.getByText('Full-Stack Development')).toBeInTheDocument()
+        expect(screen.getByText('AI Agents')).toBeInTheDocument()
+        expect(screen.getByText('AI Workflows')).toBeInTheDocument()
+        expect(screen.getByText('RAG Systems')).toBeInTheDocument()
+        expect(screen.getByText('AI Strategy')).toBeInTheDocument()
+        expect(screen.getByText('Software Development')).toBeInTheDocument()
         expect(screen.getByText('Blockchain & Web3')).toBeInTheDocument()
-        expect(screen.getByText('Engineering Consulting')).toBeInTheDocument()
+        expect(screen.getByText('Claude Code Training')).toBeInTheDocument()
     })
 
     it('renders service descriptions', () => {
         render(<ServicesSection />)
 
-        expect(screen.getByText(/Custom AI agents, RAG pipelines/)).toBeInTheDocument()
-        expect(screen.getByText(/Web applications with modern frameworks/)).toBeInTheDocument()
-    })
-
-    it('renders service tags', () => {
-        render(<ServicesSection />)
-
-        expect(screen.getByText('LangChain')).toBeInTheDocument()
-        expect(screen.getByText('Next.js')).toBeInTheDocument()
-        expect(screen.getByText('Solidity')).toBeInTheDocument()
-        expect(screen.getByText('PMP')).toBeInTheDocument()
+        expect(screen.getByText(/Custom autonomous agents/)).toBeInTheDocument()
+        expect(screen.getByText(/Automated workflows connecting/)).toBeInTheDocument()
+        expect(screen.getByText(/AI that actually knows your business/)).toBeInTheDocument()
+        expect(screen.getByText(/Clear roadmaps for AI adoption/)).toBeInTheDocument()
     })
 
     it('has the services anchor id', () => {
@@ -56,9 +52,11 @@ describe('ServicesSection', () => {
         expect(section).toBeInTheDocument()
     })
 
-    it('renders the workshops mention', () => {
+    it('renders the consultation CTA', () => {
         render(<ServicesSection />)
 
-        expect(screen.getByText(/AI strategy workshops/)).toBeInTheDocument()
+        expect(
+            screen.getByText(/Every engagement starts with a free consultation/)
+        ).toBeInTheDocument()
     })
 })

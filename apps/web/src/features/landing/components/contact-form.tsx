@@ -2,7 +2,19 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
-import { Bot, Database, Globe, GraduationCap, Lightbulb, Send, Workflow } from 'lucide-react'
+import {
+    Bot,
+    CalendarDays,
+    Clock,
+    Compass,
+    Database,
+    Globe,
+    GraduationCap,
+    Lightbulb,
+    Send,
+    Workflow,
+    Zap
+} from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
@@ -35,7 +47,12 @@ const serviceOptions = [
     { label: 'Claude Code Training', icon: GraduationCap }
 ]
 
-const timelineOptions = ['ASAP', '1-3 months', '3-6 months', 'Exploring']
+const timelineOptions = [
+    { label: 'ASAP', icon: Zap },
+    { label: '1-3 months', icon: Clock },
+    { label: '3-6 months', icon: CalendarDays },
+    { label: 'Exploring', icon: Compass }
+]
 
 const budgetOptions = ['Under $5K', '$5K-$15K', '$15K-$30K', '$30K+']
 
@@ -109,7 +126,11 @@ export function ContactForm() {
                         <Label className="text-foreground mb-1.5 text-sm">
                             Name <span className="text-destructive">*</span>
                         </Label>
-                        <Input {...register('name')} placeholder="Your full name" />
+                        <Input
+                            {...register('name')}
+                            placeholder="Your full name"
+                            className="placeholder:opacity-50"
+                        />
                         {errors.name && (
                             <p className="text-destructive mt-1 text-xs">{errors.name.message}</p>
                         )}
@@ -118,7 +139,11 @@ export function ContactForm() {
                         <Label className="text-foreground mb-1.5 text-sm">
                             Email <span className="text-destructive">*</span>
                         </Label>
-                        <Input {...register('email')} placeholder="you@company.com" />
+                        <Input
+                            {...register('email')}
+                            placeholder="you@company.com"
+                            className="placeholder:opacity-50"
+                        />
                         {errors.email && (
                             <p className="text-destructive mt-1 text-xs">{errors.email.message}</p>
                         )}
@@ -130,7 +155,11 @@ export function ContactForm() {
                     <Label className="text-foreground mb-1.5 text-sm">
                         Website URL <span className="text-muted-foreground">(optional)</span>
                     </Label>
-                    <Input {...register('website')} placeholder="https://yourcompany.com" />
+                    <Input
+                        {...register('website')}
+                        placeholder="https://yourcompany.com"
+                        className="placeholder:opacity-50"
+                    />
                 </div>
 
                 {/* Service Interest */}
@@ -175,14 +204,15 @@ export function ContactForm() {
                         Project Timeline <span className="text-destructive">*</span>
                     </Label>
                     <div className="flex flex-wrap gap-2">
-                        {timelineOptions.map(timeline => {
-                            const isSelected = selectedTimeline === timeline
+                        {timelineOptions.map(({ label, icon: Icon }) => {
+                            const isSelected = selectedTimeline === label
                             return (
                                 <button
-                                    key={timeline}
+                                    key={label}
                                     type="button"
-                                    onClick={() => selectTimeline(timeline)}
+                                    onClick={() => selectTimeline(label)}
                                     className={cn(
+                                        'inline-flex items-center gap-1.5',
                                         'rounded-full px-4 py-2 text-sm transition-all duration-200',
                                         isSelected
                                             ? 'bg-brand-accent text-white'
@@ -193,7 +223,8 @@ export function ContactForm() {
                                               )
                                     )}
                                 >
-                                    {timeline}
+                                    <Icon className="h-4 w-4" />
+                                    {label}
                                 </button>
                             )
                         })}
@@ -216,7 +247,7 @@ export function ContactForm() {
                             'border-input bg-background w-full rounded-md border px-3 py-2 text-sm',
                             'transition-[color,box-shadow] outline-none',
                             'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-                            'placeholder:text-muted-foreground'
+                            'placeholder:text-muted-foreground placeholder:opacity-50'
                         )}
                     />
                     {errors.description && (

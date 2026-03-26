@@ -2,21 +2,39 @@ import type { Service } from '../types'
 
 export const services: Service[] = [
     {
-        id: 'ai',
-        title: 'AI & Agentic Solutions',
+        id: 'ai-agents',
+        title: 'AI Agents',
         description:
-            'Custom AI agents, RAG pipelines, and intelligent automation systems that transform how your business operates.',
-        icon: 'Bot',
-        tags: ['LangChain', 'Claude', 'OpenAI', 'RAG', 'Multi-Agent'],
-        demo: 'chat'
+            'Custom autonomous agents that handle your busywork — from financial reporting to operational tasks — so you can focus on business growth.',
+        demo: 'agent',
+        featured: true
     },
     {
-        id: 'fullstack',
-        title: 'Full-Stack Development',
+        id: 'ai-workflows',
+        title: 'AI Workflows',
         description:
-            'Web applications with modern frameworks, optimized for performance, scalability, and developer experience.',
-        icon: 'Code2',
-        tags: ['Next.js', 'React', 'NestJS', 'TypeScript', 'PostgreSQL'],
+            'Automated workflows connecting your tools and eliminating repetitive tasks. No more manual data entry or copy-pasting between apps.',
+        demo: 'workflow'
+    },
+    {
+        id: 'rag-systems',
+        title: 'RAG Systems',
+        description:
+            'AI that actually knows your business data. Custom knowledge bases, intelligent search, and document Q&A that give real answers.',
+        demo: 'rag'
+    },
+    {
+        id: 'ai-strategy',
+        title: 'AI Strategy',
+        description:
+            'Clear roadmaps for AI adoption. We audit your tech stack, identify high-impact opportunities, and build an implementation plan.',
+        demo: 'strategy'
+    },
+    {
+        id: 'web-software',
+        title: 'Software Development',
+        description:
+            'End-to-end software development — from database design and business logic to stunning UI/UX.',
         demo: 'browser'
     },
     {
@@ -24,17 +42,13 @@ export const services: Service[] = [
         title: 'Blockchain & Web3',
         description:
             'Decentralized applications, smart contracts, and tokenomics design for the next generation of digital products.',
-        icon: 'Blocks',
-        tags: ['Solidity', 'Ethereum', 'Smart Contracts', 'DeFi', 'NFTs'],
         demo: 'blockchain'
     },
     {
-        id: 'engineering',
-        title: 'Engineering Consulting',
+        id: 'claude-training',
+        title: 'Claude Code Training',
         description:
-            'Mechanical engineering expertise applied to industrial projects, from concept design to commissioning.',
-        icon: 'Wrench',
-        tags: ['CAD/CAM', 'FEA', 'Project Management', 'PMP', 'Industrial'],
-        demo: 'gauge'
+            'Hands-on workshops teaching your team to build with Claude Code — from prompt engineering to production AI agents.',
+        demo: 'terminal'
     }
 ]
