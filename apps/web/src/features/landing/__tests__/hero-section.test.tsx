@@ -32,8 +32,8 @@ describe('HeroSection', () => {
         expect(screen.getByText('Book a Consultation')).toBeInTheDocument()
     })
 
-    it('renders the "See My Work" CTA', () => {
+    it('renders the "Explore Our Services" CTA', () => {
         render(<HeroSection />)
-        expect(screen.getByText('See My Work')).toBeInTheDocument()
+        expect(screen.getByText('Explore Our Services')).toBeInTheDocument()
     })
 })

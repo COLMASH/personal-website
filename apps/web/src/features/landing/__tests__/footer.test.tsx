@@ -29,6 +29,7 @@ describe('Footer', () => {
 
         expect(screen.getByText('LinkedIn')).toBeInTheDocument()
         expect(screen.getByText('GitHub')).toBeInTheDocument()
+        expect(screen.getByText('YouTube')).toBeInTheDocument()
         expect(screen.getByText('Email')).toBeInTheDocument()
     })
 

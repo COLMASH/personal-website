@@ -4,7 +4,9 @@ interface ContactPayload {
     name: string
     email: string
     company?: string
+    website?: string
     services: string[]
+    timeline?: string
     budget?: string
     description?: string
 }

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Github, Linkedin, Mail, Twitter } from 'lucide-react'
+import { Github, Linkedin, Mail, Youtube } from 'lucide-react'
 import { BrandLogo } from '@/components/brand-logo'
 
 const serviceLinks = [
@@ -21,7 +21,7 @@ const socialLinks = [
     {
         icon: Linkedin,
         label: 'LinkedIn',
-        href: 'https://linkedin.com/in/miguelasantana'
+        href: 'https://www.linkedin.com/in/miguelangelsantana/'
     },
     {
         icon: Github,
@@ -29,9 +29,9 @@ const socialLinks = [
         href: 'https://github.com/COLMASH'
     },
     {
-        icon: Twitter,
-        label: 'X / Twitter',
-        href: 'https://x.com'
+        icon: Youtube,
+        label: 'YouTube',
+        href: 'https://www.youtube.com/@misanta'
     },
     {
         icon: Mail,
@@ -49,8 +49,8 @@ export function Footer() {
                     <div>
                         <BrandLogo size="sm" initialDelay={0} />
                         <p className="text-muted-foreground mt-3 text-sm">
-                            AI Solutions Architect &<br />
-                            Full-Stack Developer
+                            AI Engineering &<br />
+                            Cross-Industry Consulting
                         </p>
                         <div className="mt-5 flex gap-3">
                             {socialLinks.map(link => {

@@ -53,8 +53,10 @@ model ContactSubmission {
   name        String
   email       String
   company     String?
+  website     String?
   services    String   // comma-separated: "ai,fullstack,blockchain"
-  budget      String?  // "under-10k", "10k-25k", "25k-50k", "50k+"
+  timeline    String?  // "asap", "1-3-months", "3-6-months", "exploring"
+  budget      String?  // "under-5k", "5k-15k", "15k-30k", "30k+"
   description String?
   status      String   @default("NEW") // NEW, READ, REPLIED, ARCHIVED
   createdAt   DateTime @default(now()) @map("created_at")

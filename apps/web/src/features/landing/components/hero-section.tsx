@@ -107,7 +107,7 @@ export function HeroSection() {
                                 'font-medium transition-colors duration-200'
                             )}
                         >
-                            See My Work
+                            Explore Our Services
                         </a>
                     </motion.div>
                 </div>

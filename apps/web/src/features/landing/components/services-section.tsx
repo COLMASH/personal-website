@@ -13,7 +13,7 @@ export function ServicesSection() {
                         <p className="text-brand-accent mb-4 text-sm font-medium tracking-widest uppercase">
                             What We Build
                         </p>
-                        <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+                        <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
                             AI Solutions That{' '}
                             <span className="text-brand-accent font-bold">Deliver Results</span>
                         </h2>

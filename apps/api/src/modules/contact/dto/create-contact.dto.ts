@@ -16,13 +16,23 @@ export class CreateContactDto {
     @IsString()
     company?: string
 
+    @ApiPropertyOptional({ example: 'https://acme.com' })
+    @IsOptional()
+    @IsString()
+    website?: string
+
     @ApiProperty({ example: ['ai', 'fullstack'], type: [String] })
     @IsArray()
     @IsString({ each: true })
     @ArrayMinSize(1)
     services: string[]
 
-    @ApiPropertyOptional({ example: '10k-25k' })
+    @ApiPropertyOptional({ example: '1-3-months' })
+    @IsOptional()
+    @IsString()
+    timeline?: string
+
+    @ApiPropertyOptional({ example: '5k-15k' })
     @IsOptional()
     @IsString()
     budget?: string

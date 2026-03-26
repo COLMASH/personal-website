@@ -26,7 +26,7 @@ describe('ContactSection', () => {
     it('renders the heading', () => {
         render(<ContactSection />)
 
-        expect(screen.getByText("Let's Talk About")).toBeInTheDocument()
+        expect(screen.getByText(/Let's Talk About/)).toBeInTheDocument()
         expect(screen.getByText('Your Project')).toBeInTheDocument()
     })
 
@@ -39,29 +39,22 @@ describe('ContactSection', () => {
     it('renders the contact form', () => {
         render(<ContactSection />)
 
-        expect(screen.getByText('Send Message')).toBeInTheDocument()
+        expect(screen.getByText('Book Your Free Consultation')).toBeInTheDocument()
     })
 
-    it('renders value props', () => {
+    it('renders what to expect items', () => {
         render(<ContactSection />)
 
-        expect(screen.getByText('Free initial consultation')).toBeInTheDocument()
+        expect(screen.getByText('Free 30-minute consultation')).toBeInTheDocument()
         expect(screen.getByText('Response within 24 hours')).toBeInTheDocument()
-        expect(screen.getByText('Flexible engagement models')).toBeInTheDocument()
-        expect(screen.getByText('NDA available on request')).toBeInTheDocument()
+        expect(screen.getByText('No-obligation project scoping')).toBeInTheDocument()
+        expect(screen.getByText('Transparent pricing upfront')).toBeInTheDocument()
     })
 
-    it('renders what to expect steps', () => {
+    it('renders email contact card', () => {
         render(<ContactSection />)
 
-        expect(screen.getByText('Tell us about your project')).toBeInTheDocument()
-        expect(screen.getByText('We schedule a discovery call')).toBeInTheDocument()
-        expect(screen.getByText('Receive your custom proposal')).toBeInTheDocument()
-    })
-
-    it('renders email contact', () => {
-        render(<ContactSection />)
-
+        expect(screen.getByText('Prefer to email directly?')).toBeInTheDocument()
         expect(screen.getByText('santanaai.co@gmail.com')).toBeInTheDocument()
     })
 })

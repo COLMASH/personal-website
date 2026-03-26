@@ -2,7 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
-import { ArrowRight } from 'lucide-react'
+import { Send } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
@@ -18,7 +18,9 @@ const contactSchema = z.object({
     name: z.string().min(2, 'Name is required'),
     email: z.string().email('Valid email is required'),
     company: z.string().optional(),
+    website: z.string().optional(),
     services: z.array(z.string()).min(1, 'Select at least one service'),
+    timeline: z.string().optional(),
     budget: z.string().optional(),
     description: z.string().optional()
 })
@@ -27,7 +29,9 @@ type ContactFormData = z.infer<typeof contactSchema>
 
 const serviceOptions = ['AI & Agents', 'Full-Stack', 'Blockchain', 'Engineering', 'Strategy']
 
-const budgetOptions = ['Under $10K', '$10K-$25K', '$25K-$50K', '$50K+']
+const timelineOptions = ['ASAP', '1-3 months', '3-6 months', 'Exploring']
+
+const budgetOptions = ['Under $5K', '$5K-$15K', '$15K-$30K', '$30K+']
 
 export function ContactForm() {
     const {
@@ -43,13 +47,16 @@ export function ContactForm() {
             name: '',
             email: '',
             company: '',
+            website: '',
             services: [],
+            timeline: '',
             budget: '',
             description: ''
         }
     })
 
     const selectedServices = watch('services')
+    const selectedTimeline = watch('timeline')
     const selectedBudget = watch('budget')
 
     const toggleService = (service: string) => {
@@ -58,6 +65,10 @@ export function ContactForm() {
             ? current.filter(s => s !== service)
             : [...current, service]
         setValue('services', updated, { shouldValidate: true })
+    }
+
+    const selectTimeline = (timeline: string) => {
+        setValue('timeline', timeline, { shouldValidate: true })
     }
 
     const selectBudget = (budget: string) => {
@@ -87,33 +98,35 @@ export function ContactForm() {
             className={cn('border-border bg-card rounded-2xl border', 'p-8 shadow-sm')}
         >
             <div className="space-y-5">
-                {/* Name */}
-                <div>
-                    <Label className="text-foreground mb-1.5 text-sm">Name</Label>
-                    <Input {...register('name')} placeholder="Your name" />
-                    {errors.name && (
-                        <p className="text-destructive mt-1 text-xs">{errors.name.message}</p>
-                    )}
+                {/* Name + Email */}
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div>
+                        <Label className="text-foreground mb-1.5 text-sm">Name</Label>
+                        <Input {...register('name')} placeholder="Your full name" />
+                        {errors.name && (
+                            <p className="text-destructive mt-1 text-xs">{errors.name.message}</p>
+                        )}
+                    </div>
+                    <div>
+                        <Label className="text-foreground mb-1.5 text-sm">Email</Label>
+                        <Input {...register('email')} placeholder="you@company.com" />
+                        {errors.email && (
+                            <p className="text-destructive mt-1 text-xs">{errors.email.message}</p>
+                        )}
+                    </div>
                 </div>
 
-                {/* Email */}
+                {/* Website URL */}
                 <div>
-                    <Label className="text-foreground mb-1.5 text-sm">Email</Label>
-                    <Input {...register('email')} placeholder="you@example.com" />
-                    {errors.email && (
-                        <p className="text-destructive mt-1 text-xs">{errors.email.message}</p>
-                    )}
-                </div>
-
-                {/* Company */}
-                <div>
-                    <Label className="text-foreground mb-1.5 text-sm">Company (optional)</Label>
-                    <Input {...register('company')} placeholder="Your company" />
+                    <Label className="text-foreground mb-1.5 text-sm">
+                        Website URL <span className="text-muted-foreground">(optional)</span>
+                    </Label>
+                    <Input {...register('website')} placeholder="https://yourcompany.com" />
                 </div>
 
                 {/* Service Interest */}
                 <div>
-                    <Label className="text-foreground mb-1.5 text-sm">Service Interest</Label>
+                    <Label className="text-foreground mb-1.5 text-sm">Services of Interest</Label>
                     <div className="flex flex-wrap gap-2">
                         {serviceOptions.map(service => {
                             const isSelected = selectedServices?.includes(service) ?? false
@@ -143,9 +156,56 @@ export function ContactForm() {
                     )}
                 </div>
 
-                {/* Budget */}
+                {/* Project Timeline */}
                 <div>
-                    <Label className="text-foreground mb-1.5 text-sm">Budget</Label>
+                    <Label className="text-foreground mb-1.5 text-sm">Project Timeline</Label>
+                    <div className="flex flex-wrap gap-2">
+                        {timelineOptions.map(timeline => {
+                            const isSelected = selectedTimeline === timeline
+                            return (
+                                <button
+                                    key={timeline}
+                                    type="button"
+                                    onClick={() => selectTimeline(timeline)}
+                                    className={cn(
+                                        'rounded-full px-4 py-2 text-sm transition-all duration-200',
+                                        isSelected
+                                            ? 'bg-brand-accent text-white'
+                                            : cn(
+                                                  'border-border border',
+                                                  'text-muted-foreground',
+                                                  'hover:border-brand-accent/50 hover:text-foreground'
+                                              )
+                                    )}
+                                >
+                                    {timeline}
+                                </button>
+                            )
+                        })}
+                    </div>
+                </div>
+
+                {/* Primary Business Challenge */}
+                <div>
+                    <Label className="text-foreground mb-1.5 text-sm">
+                        Primary Business Challenge
+                    </Label>
+                    <textarea
+                        {...register('description')}
+                        rows={4}
+                        placeholder="Tell us about the biggest challenge you'd like AI to solve..."
+                        className={cn(
+                            'border-input bg-background w-full rounded-md border px-3 py-2 text-sm',
+                            'transition-[color,box-shadow] outline-none',
+                            'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+                            'placeholder:text-muted-foreground'
+                        )}
+                    />
+                </div>
+
+                {/* Estimated Budget */}
+                <div>
+                    <Label className="text-foreground mb-1.5 text-sm">Estimated Budget</Label>
                     <div className="flex flex-wrap gap-2">
                         {budgetOptions.map(budget => {
                             const isSelected = selectedBudget === budget
@@ -171,22 +231,6 @@ export function ContactForm() {
                         })}
                     </div>
                 </div>
-
-                {/* Project Description */}
-                <div>
-                    <Label className="text-foreground mb-1.5 text-sm">Project Description</Label>
-                    <textarea
-                        {...register('description')}
-                        rows={4}
-                        placeholder="Tell us about your project..."
-                        className={cn(
-                            'border-input bg-background w-full rounded-md border px-3 py-2 text-sm',
-                            'transition-[color,box-shadow] outline-none',
-                            'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-                            'placeholder:text-muted-foreground'
-                        )}
-                    />
-                </div>
             </div>
 
             {/* Submit */}
@@ -205,8 +249,8 @@ export function ContactForm() {
                     'Submitting...'
                 ) : (
                     <>
-                        Send Message
-                        <ArrowRight className="h-4 w-4" />
+                        Book Your Free Consultation
+                        <Send className="h-4 w-4" />
                     </>
                 )}
             </button>
