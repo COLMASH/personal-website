@@ -16,46 +16,55 @@ function FileExplorerPanel() {
     return (
         <div
             className={cn(
-                'border-border/60 bg-card absolute top-8 left-0 hidden w-52 rounded-2xl border shadow-lg md:block'
+                'absolute top-8 left-2 w-2/5 overflow-hidden rounded-xl',
+                'border-border/60 bg-card shadow-panel-back border',
+                'sm:left-4 md:left-8'
             )}
+            style={{
+                transform: 'rotateX(6deg) rotateY(3deg)',
+                transformOrigin: 'center center'
+            }}
         >
             {/* Title bar */}
-            <div className="flex h-10 items-center gap-2 px-4">
-                <span className="bg-dot-red h-3 w-3 rounded-full" />
-                <span className="bg-dot-yellow h-3 w-3 rounded-full" />
-                <span className="bg-dot-green h-3 w-3 rounded-full" />
-                <span className="text-muted-foreground ml-2 text-xs font-semibold tracking-wide">
-                    Santana AI
-                </span>
+            <div className="border-border/60 bg-secondary/50 flex h-10 items-center gap-3 border-b px-4">
+                <div className="flex items-center gap-1.5">
+                    <span className="bg-dot-red h-3 w-3 rounded-full" />
+                    <span className="bg-dot-yellow h-3 w-3 rounded-full" />
+                    <span className="bg-dot-green h-3 w-3 rounded-full" />
+                </div>
+                <span className="text-muted-foreground ml-2 text-xs font-medium">Santana AI</span>
             </div>
 
-            {/* File tree */}
-            <div className="px-4 pt-1 pb-4">
-                {items.map((item, i) => (
-                    <div
-                        key={i}
-                        className="flex items-center gap-2.5 py-1"
-                        style={{ paddingLeft: `${item.indent * 14}px` }}
-                    >
-                        {/* Circle indicator */}
-                        <span
+            {/* Content: activity bar + file tree */}
+            <div className="bg-card flex">
+                {/* Activity bar (icon sidebar) */}
+                <div className="border-border/60 bg-secondary/50 hidden flex-col items-center gap-3 border-r px-2 py-4 sm:flex">
+                    <div className="bg-foreground/10 flex h-7 w-7 items-center justify-center rounded">
+                        <div className="bg-foreground/60 h-3.5 w-3.5 rounded-sm" />
+                    </div>
+                    <div className="bg-foreground/10 h-4 w-4 rounded-full" />
+                    <div className="bg-foreground/10 h-4 w-4 rounded-full" />
+                    <div className="bg-foreground/10 h-4 w-4 rounded-full" />
+                    <div className="bg-foreground/10 h-4 w-4 rounded-full" />
+                </div>
+
+                {/* File tree */}
+                <div className="space-y-1.5 px-3 py-3 text-xs">
+                    {items.map((item, i) => (
+                        <div
+                            key={i}
                             className={cn(
-                                'h-2.5 w-2.5 shrink-0 rounded-full',
-                                item.isFolder ? 'bg-foreground/20' : 'bg-foreground/10'
-                            )}
-                        />
-                        <span
-                            className={cn(
-                                'text-xs',
+                                'truncate',
                                 item.isFolder
-                                    ? 'text-foreground font-medium'
+                                    ? 'text-foreground/60 font-medium'
                                     : 'text-muted-foreground'
                             )}
+                            style={{ paddingLeft: `${item.indent * 12}px` }}
                         >
                             {item.name}
-                        </span>
-                    </div>
-                ))}
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     )
@@ -72,9 +81,7 @@ function CodePanel() {
         {
             num: 1,
             content: (
-                <>
-                    <span className="text-muted-foreground/60">{'// Configure your AI agent'}</span>
-                </>
+                <span className="text-muted-foreground/60">{'// Configure your AI agent'}</span>
             )
         },
         {
@@ -202,8 +209,16 @@ function CodePanel() {
             content: (
                 <>
                     <span className="text-muted-foreground">{'})'}</span>
-                    <span className="animate-blink bg-brand-accent ml-0.5 inline-block h-5 w-0.5" />
                 </>
+            )
+        },
+        { num: 15, content: null },
+        {
+            num: 16,
+            content: (
+                <span className="text-muted-foreground/60">
+                    {'// \u{1F680} 12 leads enriched, 3 meetings booked today'}
+                </span>
             )
         }
     ]
@@ -211,19 +226,24 @@ function CodePanel() {
     return (
         <div
             className={cn(
-                'border-border/60 bg-card relative z-10 ml-0 rounded-2xl border shadow-2xl md:ml-24'
+                'relative z-10 ml-auto w-3/4 overflow-hidden rounded-xl',
+                'border-border/60 bg-card shadow-panel-front border'
             )}
+            style={{
+                transform: 'rotateX(6deg) rotateY(-3deg)',
+                transformOrigin: 'center center'
+            }}
         >
             {/* Tab bar */}
-            <div className="flex h-10 items-center gap-4 px-5">
+            <div className="border-border/60 bg-secondary/50 flex h-10 items-center gap-1 border-b px-4">
                 {tabs.map(tab => (
                     <span
                         key={tab.name}
                         className={cn(
-                            'text-xs',
+                            'px-2 py-1 text-xs',
                             tab.active
-                                ? 'text-foreground font-semibold'
-                                : 'text-muted-foreground/60'
+                                ? 'bg-card text-foreground border-border/60 rounded border font-medium'
+                                : 'text-muted-foreground/50'
                         )}
                     >
                         {tab.name}
@@ -231,20 +251,17 @@ function CodePanel() {
                 ))}
             </div>
 
-            {/* Separator */}
-            <div className="bg-border/50 mx-4 h-px" />
-
             {/* Code area with line numbers */}
-            <div className="flex font-mono text-sm leading-7">
+            <div className="flex overflow-x-auto font-mono text-[13px] leading-7">
                 {/* Line numbers */}
-                <div className="text-muted-foreground/30 py-5 pr-4 pl-5 text-right text-xs leading-7 select-none">
+                <div className="text-muted-foreground/30 shrink-0 py-4 pr-3 pl-4 text-right select-none">
                     {lines.map(line => (
                         <div key={line.num}>{line.num}</div>
                     ))}
                 </div>
 
                 {/* Code */}
-                <div className="py-5 pr-6">
+                <div className="py-4 pr-6">
                     {lines.map(line => (
                         <div key={line.num} className="min-h-7">
                             {line.content}
@@ -252,22 +269,18 @@ function CodePanel() {
                     ))}
                 </div>
             </div>
+
+            {/* Bottom gradient fade */}
+            <div className="from-card pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t to-transparent" />
         </div>
     )
 }
 
 export function CodeEditorMockup() {
     return (
-        <div
-            className="relative py-6 pl-0 md:pl-4"
-            style={{
-                perspective: '1200px'
-            }}
-        >
-            <div className="md:[transform:rotateY(4deg)_rotateX(2deg)] md:[transform-style:preserve-3d]">
-                <FileExplorerPanel />
-                <CodePanel />
-            </div>
+        <div className="relative px-4 pb-16" style={{ perspective: '1000px' }}>
+            <FileExplorerPanel />
+            <CodePanel />
         </div>
     )
 }

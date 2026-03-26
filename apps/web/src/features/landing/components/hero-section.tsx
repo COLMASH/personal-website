@@ -116,7 +116,7 @@ export function HeroSection() {
                 <motion.div
                     {...fadeUp}
                     transition={{ duration: 0.5, delay: 0.4 }}
-                    className="mt-12 w-full max-w-3xl md:mt-16"
+                    className="mt-12 w-full max-w-5xl md:mt-16"
                 >
                     <CodeEditorMockup />
                 </motion.div>

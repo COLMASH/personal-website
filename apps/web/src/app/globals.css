@@ -47,6 +47,11 @@
     --color-dot-yellow: oklch(0.795 0.184 86.047);
     --color-dot-green: oklch(0.723 0.219 149.579);
 
+    /* Panel shadows */
+    --shadow-panel-back: 0 20px 60px -15px rgba(0, 0, 0, 0.2), 0 8px 25px -8px rgba(0, 0, 0, 0.15);
+    --shadow-panel-front:
+        0 25px 70px -15px rgba(0, 0, 0, 0.25), 0 10px 30px -8px rgba(0, 0, 0, 0.18);
+
     /* Animation tokens */
     --animate-blink: blink 1s step-end infinite;
     --animate-float: float 6s ease-in-out infinite;
