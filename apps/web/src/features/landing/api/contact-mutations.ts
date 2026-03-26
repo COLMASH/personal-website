@@ -3,12 +3,11 @@ import { apiClient } from '@/lib/api-client'
 interface ContactPayload {
     name: string
     email: string
-    company?: string
     website?: string
     services: string[]
-    timeline?: string
-    budget?: string
-    description?: string
+    timeline: string
+    budget: string
+    description: string
 }
 
 interface ContactResponse {

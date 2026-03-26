@@ -57,4 +57,22 @@ describe('ContactSection', () => {
         expect(screen.getByText('Prefer to email directly?')).toBeInTheDocument()
         expect(screen.getByText('santanaai.co@gmail.com')).toBeInTheDocument()
     })
+
+    it('renders updated service options', () => {
+        render(<ContactSection />)
+
+        expect(screen.getByText('AI Agents')).toBeInTheDocument()
+        expect(screen.getByText('AI Workflows')).toBeInTheDocument()
+        expect(screen.getByText('AI Strategy')).toBeInTheDocument()
+        expect(screen.getByText('Web2/3 Software')).toBeInTheDocument()
+        expect(screen.getByText('RAG Systems')).toBeInTheDocument()
+        expect(screen.getByText('Claude Code Training')).toBeInTheDocument()
+    })
+
+    it('renders required field asterisks', () => {
+        render(<ContactSection />)
+
+        const asterisks = screen.getAllByText('*')
+        expect(asterisks).toHaveLength(6)
+    })
 })

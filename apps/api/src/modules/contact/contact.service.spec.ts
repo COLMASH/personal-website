@@ -30,9 +30,9 @@ describe('ContactService', () => {
             const dto = {
                 name: 'John Doe',
                 email: 'john@example.com',
-                company: 'Acme Inc',
-                services: ['ai', 'fullstack'],
-                budget: '10k-25k',
+                services: ['AI Agents', 'AI Workflows'],
+                timeline: '1-3 months',
+                budget: '$5K-$15K',
                 description: 'I need an AI agent'
             }
 
@@ -56,7 +56,7 @@ describe('ContactService', () => {
             expect(mockPrisma.contactSubmission.create).toHaveBeenCalledWith({
                 data: {
                     ...dto,
-                    services: 'ai,fullstack'
+                    services: 'AI Agents,AI Workflows'
                 }
             })
         })

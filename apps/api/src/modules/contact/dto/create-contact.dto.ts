@@ -11,11 +11,6 @@ export class CreateContactDto {
     @IsEmail()
     email: string
 
-    @ApiPropertyOptional({ example: 'Acme Inc' })
-    @IsOptional()
-    @IsString()
-    company?: string
-
     @ApiPropertyOptional({ example: 'https://acme.com' })
     @IsOptional()
     @IsString()
@@ -27,18 +22,18 @@ export class CreateContactDto {
     @ArrayMinSize(1)
     services: string[]
 
-    @ApiPropertyOptional({ example: '1-3-months' })
-    @IsOptional()
+    @ApiProperty({ example: '1-3 months' })
     @IsString()
-    timeline?: string
+    @MinLength(1)
+    timeline: string
 
-    @ApiPropertyOptional({ example: '5k-15k' })
-    @IsOptional()
+    @ApiProperty({ example: '$5K-$15K' })
     @IsString()
-    budget?: string
+    @MinLength(1)
+    budget: string
 
-    @ApiPropertyOptional({ example: 'I need an AI agent for...' })
-    @IsOptional()
+    @ApiProperty({ example: 'I need an AI agent for...' })
     @IsString()
-    description?: string
+    @MinLength(1)
+    description: string
 }
