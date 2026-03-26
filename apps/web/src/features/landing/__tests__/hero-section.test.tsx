@@ -12,10 +12,6 @@ vi.mock('framer-motion', () => ({
     AnimatePresence: ({ children }: { children: React.ReactNode }) => <>{children}</>
 }))
 
-vi.mock('../components/ambient-orbs', () => ({
-    AmbientOrbs: () => <div data-testid="ambient-orbs" />
-}))
-
 vi.mock('../components/code-editor-mockup', () => ({
     CodeEditorMockup: () => <div data-testid="code-editor-mockup" />
 }))
@@ -23,12 +19,12 @@ vi.mock('../components/code-editor-mockup', () => ({
 describe('HeroSection', () => {
     it('renders the headline text', () => {
         render(<HeroSection />)
-        expect(screen.getByText('Build Smarter with')).toBeInTheDocument()
+        expect(screen.getByText('Make AI Your')).toBeInTheDocument()
     })
 
     it('renders the rotating accent word', () => {
         render(<HeroSection />)
-        expect(screen.getByText('AI & Engineering')).toBeInTheDocument()
+        expect(screen.getByText('Unfair Advantage')).toBeInTheDocument()
     })
 
     it('renders the "Book a Consultation" CTA', () => {

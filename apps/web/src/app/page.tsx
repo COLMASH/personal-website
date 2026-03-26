@@ -1,4 +1,4 @@
-import { InteractiveGrid } from '@/features/landing/components/interactive-grid'
+import { InfiniteGrid } from '@/components/ui/the-infinite-grid'
 import { Navigation } from '@/features/landing/components/navigation'
 import { HeroSection } from '@/features/landing/components/hero-section'
 import { StatsBanner } from '@/features/landing/components/stats-banner'
@@ -12,7 +12,7 @@ export default function LandingPage() {
         <>
             <Navigation />
             <main>
-                <InteractiveGrid />
+                <InfiniteGrid />
                 <HeroSection />
                 <StatsBanner />
                 <ServicesSection />

@@ -16,7 +16,7 @@ function FileExplorerPanel() {
     return (
         <div
             className={cn(
-                'border-border/60 bg-card absolute top-8 left-0 w-52 rounded-2xl border shadow-lg'
+                'border-border/60 bg-card absolute top-8 left-0 hidden w-52 rounded-2xl border shadow-lg md:block'
             )}
         >
             {/* Title bar */}
@@ -211,7 +211,7 @@ function CodePanel() {
     return (
         <div
             className={cn(
-                'border-border/60 bg-card relative z-10 ml-24 rounded-2xl border shadow-2xl'
+                'border-border/60 bg-card relative z-10 ml-0 rounded-2xl border shadow-2xl md:ml-24'
             )}
         >
             {/* Tab bar */}
@@ -259,17 +259,12 @@ function CodePanel() {
 export function CodeEditorMockup() {
     return (
         <div
-            className="relative py-6 pl-4"
+            className="relative py-6 pl-0 md:pl-4"
             style={{
                 perspective: '1200px'
             }}
         >
-            <div
-                style={{
-                    transform: 'rotateY(4deg) rotateX(2deg)',
-                    transformStyle: 'preserve-3d'
-                }}
-            >
+            <div className="md:[transform:rotateY(4deg)_rotateX(2deg)] md:[transform-style:preserve-3d]">
                 <FileExplorerPanel />
                 <CodePanel />
             </div>

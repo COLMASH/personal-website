@@ -3,21 +3,13 @@
 import { useState, useEffect, useCallback } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { cn, smoothScrollTo } from '@/lib/utils'
 
 const NAV_LINKS = [
     { label: 'Services', href: '#services' },
     { label: 'Approach', href: '#approach' },
     { label: 'Contact', href: '#contact' }
 ] as const
-
-function smoothScrollTo(href: string) {
-    const id = href.replace('#', '')
-    const el = document.getElementById(id)
-    if (el) {
-        el.scrollIntoView({ behavior: 'smooth' })
-    }
-}
 
 export function Navigation() {
     const [scrolled, setScrolled] = useState(false)
