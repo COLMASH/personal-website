@@ -35,8 +35,8 @@ export function Navigation() {
 
     const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         e.preventDefault()
-        smoothScrollTo(href)
         setMobileOpen(false)
+        setTimeout(() => smoothScrollTo(href), 300)
     }, [])
 
     return (
@@ -44,7 +44,7 @@ export function Navigation() {
             className={cn(
                 'fixed top-0 right-0 left-0 z-50',
                 'transition-all duration-500 ease-out',
-                scrolled
+                scrolled || mobileOpen
                     ? 'border-border/50 bg-background/80 border-b backdrop-blur-xl'
                     : 'border-b border-transparent bg-transparent'
             )}
@@ -109,7 +109,7 @@ export function Navigation() {
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.25, ease: 'easeInOut' }}
-                        className="border-border/50 overflow-hidden border-t lg:hidden"
+                        className="border-border/50 bg-background relative overflow-hidden border-t lg:hidden"
                     >
                         <div className="flex flex-col gap-4 px-6 py-6">
                             {NAV_LINKS.map(link => (

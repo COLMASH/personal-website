@@ -6,10 +6,10 @@ import { ApproachStepCard } from './approach-step'
 
 export function ApproachSection() {
     return (
-        <section id="approach" className="relative z-[1] py-24">
+        <section id="approach" className="relative z-[1] py-14 md:py-24">
             <div className="mx-auto max-w-7xl px-6">
                 {/* Section header */}
-                <div className="mb-16 text-center">
+                <div className="mb-10 text-center md:mb-16">
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}

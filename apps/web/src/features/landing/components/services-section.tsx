@@ -12,10 +12,10 @@ export function ServicesSection() {
     const bottomRow = services.slice(4)
 
     return (
-        <section id="services" className="relative py-24">
+        <section id="services" className="relative py-14 md:py-24">
             <div className="mx-auto max-w-7xl px-6">
                 <ScrollReveal>
-                    <div className="mb-16 text-center">
+                    <div className="mb-10 text-center md:mb-16">
                         <p className="text-brand-accent mb-4 text-sm font-medium tracking-widest uppercase">
                             What We Build
                         </p>

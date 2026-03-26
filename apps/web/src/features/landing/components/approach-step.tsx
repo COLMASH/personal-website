@@ -23,7 +23,7 @@ export function ApproachStepCard({ step, index }: ApproachStepProps) {
         >
             <motion.div
                 whileHover={{ y: -6, transition: hoverTransition }}
-                className="group border-border bg-card hover:border-brand-accent/25 relative cursor-default rounded-2xl border p-8 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-[border-color,box-shadow] duration-200 hover:shadow-[0_8px_20px_rgba(0,0,0,0.08)]"
+                className="group border-border bg-card hover:border-brand-accent/25 relative cursor-default rounded-2xl border p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-[border-color,box-shadow] duration-200 hover:shadow-[0_8px_20px_rgba(0,0,0,0.08)] sm:p-8"
             >
                 {/* Accent border-top on left side */}
                 <div className="bg-brand-accent absolute top-0 left-6 h-1 w-12 rounded-b-full" />

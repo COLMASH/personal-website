@@ -44,7 +44,7 @@ export function HeroSection() {
                     <motion.h1
                         {...fadeUp}
                         transition={{ duration: 0.5, delay: 0.1 }}
-                        className="mt-8 text-5xl font-light tracking-tighter md:text-6xl lg:text-7xl"
+                        className="mt-8 text-4xl font-light tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl"
                     >
                         Make AI Your
                         <br />
@@ -77,7 +77,7 @@ export function HeroSection() {
                     <motion.div
                         {...fadeUp}
                         transition={{ duration: 0.5, delay: 0.3 }}
-                        className="mt-10 flex justify-center gap-4"
+                        className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4"
                     >
                         <a
                             href="#contact"
@@ -87,7 +87,8 @@ export function HeroSection() {
                             }}
                             className={cn(
                                 'bg-brand-accent hover:bg-brand-accent-hover',
-                                'inline-flex items-center gap-2 rounded-full px-8 py-3.5',
+                                'inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5',
+                                'w-full sm:w-auto',
                                 'font-medium text-white transition-all duration-200',
                                 'hover:shadow-brand-accent/25 hover:shadow-lg'
                             )}
@@ -104,6 +105,7 @@ export function HeroSection() {
                             className={cn(
                                 'border-border hover:bg-secondary',
                                 'rounded-full border px-8 py-3.5',
+                                'w-full text-center sm:w-auto',
                                 'font-medium transition-colors duration-200'
                             )}
                         >

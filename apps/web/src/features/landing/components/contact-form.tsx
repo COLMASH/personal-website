@@ -117,7 +117,7 @@ export function ContactForm() {
     return (
         <form
             onSubmit={handleSubmit(onSubmit)}
-            className={cn('border-border bg-card rounded-2xl border', 'p-8 shadow-sm')}
+            className={cn('border-border bg-card rounded-2xl border', 'p-5 shadow-sm sm:p-8')}
         >
             <div className="space-y-5">
                 {/* Name + Email */}

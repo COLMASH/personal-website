@@ -14,7 +14,7 @@ const expectations = [
 
 export function ContactSection() {
     return (
-        <section id="contact" className="border-border/50 relative z-[1] border-t py-24">
+        <section id="contact" className="border-border/50 relative z-[1] border-t py-14 md:py-24">
             <div className="mx-auto max-w-7xl px-6">
                 {/* Section header — centered, matching other sections */}
                 <motion.div
@@ -22,7 +22,7 @@ export function ContactSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="mb-16 text-center"
+                    className="mb-10 text-center md:mb-16"
                 >
                     <p className="text-brand-accent mb-4 text-sm font-medium tracking-widest uppercase">
                         Get Started
@@ -39,7 +39,7 @@ export function ContactSection() {
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 gap-16 lg:grid-cols-[2fr_3fr]">
+                <div className="grid grid-cols-1 gap-10 lg:grid-cols-[2fr_3fr] lg:gap-16">
                     {/* Left side */}
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
