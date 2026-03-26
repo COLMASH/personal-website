@@ -1,6 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
 import { cn } from '@/lib/utils'
 
@@ -212,6 +213,9 @@ function RagDemo() {
 }
 
 function StrategyDemo() {
+    const ref = useRef(null)
+    const inView = useInView(ref, { once: true, margin: '-40px' })
+
     const phases = [
         { name: 'Audit', weeks: 'Wk 1-2', progress: 100 },
         { name: 'Quick Wins', weeks: 'Wk 3-4', progress: 75 },
@@ -220,7 +224,7 @@ function StrategyDemo() {
     ]
 
     return (
-        <div className="flex w-full flex-col gap-0 px-4">
+        <div ref={ref} className="flex w-full flex-col gap-0 px-4">
             <div
                 className="text-brand-accent/70 text-2xs mb-2 font-semibold tracking-wider uppercase"
                 style={{ animation: 'fade-in-up 0.3s ease-out both' }}
@@ -242,8 +246,10 @@ function StrategyDemo() {
                             <div
                                 className="bg-brand-accent h-full rounded-full"
                                 style={{
-                                    width: `${phase.progress}%`,
-                                    opacity: 0.8 - i * 0.15
+                                    width: inView ? `${phase.progress}%` : '0%',
+                                    opacity: 0.8 - i * 0.15,
+                                    transition: 'width 0.8s ease-out',
+                                    transitionDelay: `${(i + 1) * 200 + 300}ms`
                                 }}
                             />
                         </div>
@@ -258,8 +264,11 @@ function StrategyDemo() {
 }
 
 function BrowserDemo() {
+    const ref = useRef(null)
+    const inView = useInView(ref, { once: true, margin: '-40px' })
+
     return (
-        <div className="flex w-full flex-col px-4">
+        <div ref={ref} className="flex w-full flex-col px-4">
             <div className="border-border bg-muted/50 flex items-center gap-1.5 rounded-t-lg border px-3 py-1.5">
                 <span className="bg-dot-red/60 h-2 w-2 rounded-full" />
                 <span className="bg-dot-yellow/60 h-2 w-2 rounded-full" />
@@ -272,7 +281,10 @@ function BrowserDemo() {
                 <div className="bg-muted h-1.5 w-full overflow-hidden rounded-full">
                     <div
                         className="bg-brand-accent/50 h-full rounded-full"
-                        style={{ animation: 'browser-load 2s ease-out forwards' }}
+                        style={{
+                            animation: 'browser-load 2s ease-out forwards',
+                            animationPlayState: inView ? 'running' : 'paused'
+                        }}
                     />
                 </div>
                 <div className="flex gap-2">
