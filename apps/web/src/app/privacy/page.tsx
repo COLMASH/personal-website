@@ -6,7 +6,8 @@ import { Footer } from '@/features/landing/components/footer'
 
 export const metadata: Metadata = {
     title: 'Privacy Policy | Santana AI',
-    description: 'Privacy Policy for Santana AI — how we collect, use, and protect your data.'
+    description:
+        'Privacy Policy for Santana AI — how we collect, use, and protect your data as an AI consulting company.'
 }
 
 export default function PrivacyPage() {

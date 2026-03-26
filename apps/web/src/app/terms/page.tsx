@@ -6,7 +6,8 @@ import { Footer } from '@/features/landing/components/footer'
 
 export const metadata: Metadata = {
     title: 'Terms of Service | Santana AI',
-    description: 'Terms of Service for Santana AI — AI Solutions Architect & Full-Stack Developer.'
+    description:
+        'Terms of Service for Santana AI — AI consulting company building agentic AI solutions.'
 }
 
 export default function TermsPage() {

@@ -11,21 +11,23 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-    title: 'Santana AI | AI Solutions Architect & Full-Stack Developer',
+    title: 'Santana AI - Make AI Your Agentic Workforce',
     description:
-        'From autonomous AI agents to industrial-scale engineering — 15+ years of turning complex problems into elegant solutions. AI, Full-Stack, Blockchain, Engineering & Project Management.',
+        'Santana AI is an AI consulting company that builds autonomous AI agents and agentic workflows to transform your business operations. From strategy to deployment — make AI your workforce.',
     keywords: [
-        'AI Solutions',
+        'AI Consulting',
         'Agentic AI',
-        'Full-Stack Development',
-        'Blockchain',
-        'Engineering Consulting',
-        'Project Management'
+        'AI Agents',
+        'AI Workforce',
+        'AI Strategy',
+        'AI Implementation',
+        'Autonomous AI',
+        'Business Automation'
     ],
     openGraph: {
-        title: 'Santana AI | AI Solutions Architect & Full-Stack Developer',
+        title: 'Santana AI - Make AI Your Agentic Workforce',
         description:
-            'From autonomous AI agents to industrial-scale engineering — 15+ years of turning complex problems into elegant solutions.',
+            'AI consulting company that builds autonomous AI agents and agentic workflows to transform your business operations.',
         type: 'website'
     }
 }

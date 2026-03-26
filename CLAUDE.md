@@ -1,10 +1,10 @@
-# CLAUDE.md — personal-website
+# CLAUDE.md — Santana AI
 
 This file provides guidance to Claude Code (claude.ai/code) when working with this codebase.
 
 ## Project Overview
 
-**personal-website** is a full-stack monorepo containing:
+**Santana AI** is the company website for Santana AI, an AI consulting firm. It is a full-stack monorepo containing:
 - **Frontend**: Next.js 15 (App Router) with TypeScript, Tailwind CSS, and shadcn/ui
 - **Backend**: NestJS with TypeScript, Prisma ORM, and SQLite
 - **Infrastructure**: Docker Compose for local development, VPS deployment via SSH
@@ -12,7 +12,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with th
 ## Architecture
 
 ```
-personal-website/
+santana-ai/
 ├── apps/
 │   ├── web/          # Next.js 15 frontend (port 3000)
 │   └── api/          # NestJS backend (port 8000)
