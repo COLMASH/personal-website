@@ -11,6 +11,11 @@ export interface AppConfig {
     corsOrigins: string[]
     sentryDsn: string | undefined
     sentryEnabled: boolean
+    mailHost: string
+    mailPort: number
+    mailUser: string
+    mailPassword: string
+    mailFrom: string
 }
 
 export const appConfig = registerAs(
@@ -25,6 +30,11 @@ export const appConfig = registerAs(
         jwtExpirationMinutes: parseInt(process.env.JWT_EXPIRATION_MINUTES ?? '300', 10),
         corsOrigins: process.env.CORS_ORIGINS?.split(',') ?? ['http://localhost:3000'],
         sentryDsn: process.env.SENTRY_DSN,
-        sentryEnabled: process.env.SENTRY_ENABLED === 'true'
+        sentryEnabled: process.env.SENTRY_ENABLED === 'true',
+        mailHost: process.env.MAIL_HOST ?? 'smtp.gmail.com',
+        mailPort: parseInt(process.env.MAIL_PORT ?? '587', 10),
+        mailUser: process.env.MAIL_USER ?? '',
+        mailPassword: process.env.MAIL_PASSWORD ?? '',
+        mailFrom: process.env.MAIL_FROM ?? ''
     })
 )
