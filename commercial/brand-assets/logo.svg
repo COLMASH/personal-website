@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 50" width="360" height="50">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@800&amp;display=swap');
+    .logo-text { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 32px; letter-spacing: 0.18em; text-transform: uppercase; }
+  </style>
+  <text x="0" y="36" class="logo-text" fill="#1a1a1a">SANTANA</text>
+  <text x="248" y="36" class="logo-text" fill="#00b162">AI</text>
+</svg>

@@ -18,6 +18,9 @@ santana-ai/
 │   └── api/          # NestJS backend (port 8000)
 ├── packages/         # Shared packages (types, utils, config)
 ├── docker/           # Docker configuration files
+├── commercial/       # Brand assets & commercial proposals
+│   ├── brand-assets/ # Logo, color palette, brand guide, tokens
+│   └── proposals/    # Client proposals (YYYY-MM-DD-client/)
 ├── docker-compose.yml
 ├── turbo.json        # Turborepo pipeline config
 └── pnpm-workspace.yaml
@@ -122,6 +125,13 @@ santana-ai/
 - Use `next/image` for all images
 - Use `next/link` for all internal navigation
 - **Semantic Tailwind v4**: Always use semantic Tailwind classes over arbitrary values. When a canonical utility exists (e.g. `h-75` over `h-[300px]`, `max-w-3/5` over `max-w-[60%]`, `blur-4xl` over `blur-[120px]`), use it. When no canonical exists, define a custom theme token in `globals.css` (e.g. `--blur-4xl: 120px`) rather than scattering arbitrary `[value]` syntax. Leave shadcn/ui component files (`components/ui/*`) as-is — they use arbitrary values intentionally.
+
+### Commercial Proposals
+- All proposals live in `commercial/proposals/` using the format `YYYY-MM-DD-client/` (e.g. `2026-09-03-ilv/`)
+- Each proposal folder contains: `brief.txt` (raw input) and the generated HTML proposal
+- Brand assets (logo, colors, fonts, tokens) live in `commercial/brand-assets/` — reference these when generating proposals
+- Proposals are standalone HTML files with embedded CSS, Google Fonts via CDN, and Santana AI branding (see `commercial/brand-assets/brand-guide.md`)
+- Never commit client-confidential proposal content to public repos
 
 ### Code Style
 - Prettier handles formatting (see `.prettierrc`)

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 140" width="680" height="140">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600&amp;display=swap');
+    .label { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 11px; fill: #1a1a1a; }
+    .hex { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 10px; fill: #6b7280; }
+  </style>
+
+  <!-- Primary Accent -->
+  <rect x="10" y="10" width="110" height="70" rx="10" fill="#00b162"/>
+  <text x="65" y="102" text-anchor="middle" class="label">Primary</text>
+  <text x="65" y="118" text-anchor="middle" class="hex">#00b162</text>
+
+  <!-- Primary Hover -->
+  <rect x="140" y="10" width="110" height="70" rx="10" fill="#009048"/>
+  <text x="195" y="102" text-anchor="middle" class="label">Hover</text>
+  <text x="195" y="118" text-anchor="middle" class="hex">#009048</text>
+
+  <!-- Background -->
+  <rect x="270" y="10" width="110" height="70" rx="10" fill="#fafcfa" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="325" y="102" text-anchor="middle" class="label">Background</text>
+  <text x="325" y="118" text-anchor="middle" class="hex">#fafcfa</text>
+
+  <!-- Text -->
+  <rect x="400" y="10" width="110" height="70" rx="10" fill="#1a1a1a"/>
+  <text x="455" y="102" text-anchor="middle" class="label">Text</text>
+  <text x="455" y="118" text-anchor="middle" class="hex">#1a1a1a</text>
+
+  <!-- Text Muted -->
+  <rect x="530" y="10" width="110" height="70" rx="10" fill="#6b7280"/>
+  <text x="585" y="102" text-anchor="middle" class="label">Muted</text>
+  <text x="585" y="118" text-anchor="middle" class="hex">#6b7280</text>
+</svg>
